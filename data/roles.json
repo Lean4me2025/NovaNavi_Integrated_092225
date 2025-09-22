@@ -1,0 +1,116 @@
+[
+  {
+    "title": "Process Engineer",
+    "summary": "Optimize workflows, remove waste, and drive operational excellence.",
+    "signals": [
+      "Process‑Focused",
+      "Data‑Driven",
+      "Analytical",
+      "Quality‑Focused",
+      "Planner"
+    ]
+  },
+  {
+    "title": "Product Manager",
+    "summary": "Own product outcomes from discovery to launch.",
+    "signals": [
+      "Communicator",
+      "Strategic",
+      "Visionary",
+      "Collaborative",
+      "Results‑Driven"
+    ]
+  },
+  {
+    "title": "Data Analyst",
+    "summary": "Turn raw data into insights and dashboards.",
+    "signals": [
+      "Analytical",
+      "Data‑Driven",
+      "Detail-Oriented",
+      "Systems Thinker",
+      "Researcher"
+    ]
+  },
+  {
+    "title": "Operations Manager",
+    "summary": "Run day‑to‑day operations with reliability and quality.",
+    "signals": [
+      "Organizer",
+      "Reliable",
+      "Quality‑Focused",
+      "Calm Under Pressure",
+      "Planner"
+    ]
+  },
+  {
+    "title": "Customer Success Lead",
+    "summary": "Guide customers to value and retention.",
+    "signals": [
+      "Communicator",
+      "Empathetic",
+      "Problem Solver",
+      "Connector",
+      "Listener"
+    ]
+  },
+  {
+    "title": "Ministry Coordinator",
+    "summary": "Lead and care for teams and outreach.",
+    "signals": [
+      "Ministry‑Minded",
+      "Servant‑Leader",
+      "Compassionate",
+      "Mentor",
+      "Organizer"
+    ]
+  },
+  {
+    "title": "Software Developer",
+    "summary": "Design and build reliable software systems.",
+    "signals": [
+      "Technologist",
+      "Builder",
+      "Problem Solver",
+      "Disciplined",
+      "Hands‑On"
+    ]
+  },
+  {
+    "title": "UX Designer",
+    "summary": "Craft intuitive experiences through research and design.",
+    "signals": [
+      "Design Thinker",
+      "Creative",
+      "Researcher",
+      "Storyteller",
+      "Empathetic"
+    ]
+  },
+  {
+    "title": "Sales Executive",
+    "summary": "Drive new revenue with consultative selling.",
+    "signals": [
+      "Persuasive",
+      "Connector",
+      "Results‑Driven",
+      "Courageous",
+      "Communicator"
+    ]
+  },
+  {
+    "title": "Program Director",
+    "summary": "Coordinate cross‑functional initiatives to deliver outcomes.",
+    "signals": {
+      "title": "Program Director",
+      "summary": "Coordinate cross‑functional initiatives to deliver outcomes.",
+      "signals": [
+        "Strategic",
+        "Organizer",
+        "Facilitator",
+        "Collaborative",
+        "Servant‑Leader"
+      ]
+    }
+  }
+]
