@@ -37,18 +37,33 @@ function homeView(){
 
       <div class="roadmap">
         <h3>How it works</h3>
-        <ol>
-          <li><strong>Discover with NOVA.</strong> Choose traits that describe you.</li>
-          <li><strong>See your snapshot.</strong> NOVA shows your attributes and aligned roles.</li>
-          <li><strong>Reflect.</strong> Pause and consider where you are in your journey.</li>
-          <li><strong>Choose a role.</strong> Pick a focus role that fits your purpose.</li>
-          <li><strong>Build with NAVI.</strong> Turn discovery into resumes, letters, and steps.</li>
-        </ol>
+        <div class="steps-row">
+          <div class="step-box">
+            <h4>Discover with NOVA</h4>
+            <p>Choose traits that describe you.</p>
+          </div>
+          <div class="step-box">
+            <h4>See your results</h4>
+            <p>Get matched to attributes & roles.</p>
+          </div>
+          <div class="step-box">
+            <h4>Reflect</h4>
+            <p>Pause and consider your journey.</p>
+          </div>
+          <div class="step-box">
+            <h4>Choose a role</h4>
+            <p>Pick a focus role that fits.</p>
+          </div>
+          <div class="step-box">
+            <h4>Build with NAVI</h4>
+            <p>Turn discovery into resumes, letters, and steps.</p>
+          </div>
+        </div>
       </div>
 
       <p class="closing">✨ This isn’t just job matching — it’s uncovering who you were designed to be, and then charting where you can go.</p>
 
-      <div class="actions">
+      <div class="steps-cta">
         <a class="btn primary" href="#/nova">Start with NOVA</a>
       </div>
     </section>

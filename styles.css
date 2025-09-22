@@ -82,3 +82,15 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 .phase{margin:1.5rem 0}
 .roadmap ol{padding-left:1.2rem}
 .closing{margin:1rem 0;font-style:italic;color:var(--muted)}
+
+.steps-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:stretch;margin:1rem 0}
+.step-box{flex:1;min-width:160px;background:#0f1835;border:1px solid var(--line);border-radius:.6rem;padding:.75rem .9rem;position:relative}
+.step-box h4{margin:.1rem 0 .25rem;font-size:1rem}
+.step-box p{margin:0;color:var(--muted);font-size:.9rem}
+.step-box::after{content:"→";position:absolute;right:-.45rem;top:50%;transform:translateY(-50%);opacity:.5}
+.steps-row .step-box:last-child::after{content:""}
+.steps-cta{display:flex;justify-content:flex-end;margin-top:.5rem}
+@media (max-width: 720px){
+  .step-box::after{display:none}
+  .steps-cta{justify-content:center}
+}
