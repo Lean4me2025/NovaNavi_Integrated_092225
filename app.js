@@ -13,6 +13,7 @@ const state = {
   selectedRole: null,
 };
 
+
 function homeView(){
   return `
     <section class="section">
@@ -56,19 +57,19 @@ function homeView(){
           </div>
           <div class="step-box">
             <h4>Build with NAVI</h4>
-            <p>Turn discovery into resumes, letters, and steps.</p>
+            <p>Turn discovery into resumes, letters, steps.</p>
           </div>
+        </div>
+        <div class="steps-cta">
+          <a class="btn primary" href="#/nova">Start with NOVA</a>
         </div>
       </div>
 
       <p class="closing">✨ This isn’t just job matching — it’s uncovering who you were designed to be, and then charting where you can go.</p>
-
-      <div class="steps-cta">
-        <a class="btn primary" href="#/nova">Start with NOVA</a>
-      </div>
     </section>
   `;
 }
+
 
 function render(route){
   const app = el('#app');
