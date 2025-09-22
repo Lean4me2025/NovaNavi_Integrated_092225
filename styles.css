@@ -47,3 +47,33 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 @media (max-width: 560px){
   .cards4{grid-template-columns:1fr}
 }
+
+
+.progress{margin:-.25rem 0 .75rem;color:var(--muted)}
+.coach-tip{background:#0f1835;border:1px solid var(--line);border-radius:.75rem;padding:.75rem;margin:1rem 0}
+.reflect-card p{min-height:3.5em}
+.journal textarea{width:100%;resize:vertical;border-radius:.6rem;border:1px solid var(--line);background:#0f1835;color:var(--ink);padding:.7rem}
+.reassure{color:var(--muted);margin-top:.75rem}
+
+.sticky-actions{position:sticky;top:60px;z-index:5;background:linear-gradient(180deg,#0d1330 0%, rgba(11,16,32,0.95) 100%);border:1px solid var(--line);border-radius:.9rem;margin:.5rem 0 1rem;padding:.6rem;backdrop-filter: blur(6px)}
+.sticky-actions .row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.sticky-actions input[type="search"]{flex:1;min-width:220px;padding:.6rem .9rem;border-radius:.6rem;border:1px solid var(--line);background:#0f1835;color:var(--ink)}
+.sticky-actions .btn{padding:.6rem .95rem}
+@media (max-width:560px){ .sticky-actions{top:52px} }
+
+.stair{margin:1rem 0}
+.stair .step{background:#0f1835;border:1px solid var(--line);border-radius:.75rem;margin:.5rem 0;position:relative;overflow:hidden}
+.stair .step header{padding:.8rem 1rem;cursor:pointer;font-weight:700}
+.stair .step header small{opacity:.7;font-weight:400;margin-left:.5rem}
+.stair .step .content{display:none;padding:0 1rem 1rem}
+.stair .step.open .content{display:block}
+/* simple width ladder */
+.stair .step[data-level="1"]{width:55%}
+.stair .step[data-level="2"]{width:65%}
+.stair .step[data-level="3"]{width:75%}
+.stair .step[data-level="4"]{width:85%}
+.stair .step[data-level="5"]{width:95%}
+.stair .step[data-level="6"]{width:100%}
+@media (max-width: 700px){
+  .stair .step{width:100%}
+}

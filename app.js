@@ -24,7 +24,7 @@ function render(route){
           <h2>Welcome</h2>
           <p>NOVA helps you discover your purpose profile. NAVI turns it into resumes, letters, and roles.</p>
           <div class="actions">
-            <a class="btn primary" href="#/reflect">Start with Reflection</a>
+            <a class="btn primary" href="#/nova">Start with NOVA</a>
             <a class="btn ghost" href="#/navi">Jump to NAVI</a>
           </div>
         </section>

@@ -6,18 +6,24 @@ export const Nova = {
     return `
       <section class="section">
         <h2>Discover Your Purpose (NOVA)</h2>
-        <div class="controls">
-          <input id="traitSearch" type="search" placeholder="Search traits…">
-          <button id="clearTraits" class="btn ghost">Clear</button>
+
+        <div class="sticky-actions" role="region" aria-label="Trait actions">
+          <div class="row">
+            <input id="traitSearch" type="search" placeholder="Search traits…">
+            <a id="seeResultTop" class="btn primary" href="#/result">See My Snapshot</a>
+            <button id="clearTraits" class="btn ghost" type="button">Clear</button>
+          </div>
         </div>
-        <div id="traitsGrid" class="grid"></div>
+
+        <div id="traitsGrid" class="grid" aria-live="polite"></div>
+
         <div class="actions">
           <a class="btn ghost" href="#/home">Back</a>
           <a id="seeResult" class="btn primary" href="#/result">See My Snapshot</a>
         </div>
       </section>
     `;
-  },
+  },},
 
   // Renders the snapshot with role suggestions + domain overview
   resultTemplate(summary, domainHtml, roleCards, hasChosen){
@@ -39,6 +45,7 @@ export const Nova = {
 
         <div class="actions">
           <a class="btn ghost" href="#/nova">Edit Traits</a>
+          <a id="reflectRefine" class="btn ghost" href="#/reflect">Reflect & Refine</a>
           <a class="btn primary ${hasChosen ? '' : 'disabled'}" id="toNavi" href="${hasChosen ? '#/navi' : 'javascript:void(0)'}">Build with NAVI</a>
         </div>
       </section>
