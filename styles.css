@@ -77,3 +77,8 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 @media (max-width: 700px){
   .stair .step{width:100%}
 }
+
+.stat{margin:1rem 0;font-size:1.1rem;color:var(--ink)}
+.phase{margin:1.5rem 0}
+.roadmap ol{padding-left:1.2rem}
+.closing{margin:1rem 0;font-style:italic;color:var(--muted)}

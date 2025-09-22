@@ -19,13 +19,42 @@ function render(route){
       Reflection.mount(state);
       break;
     case 'home':
-      app.innerHTML = `
+      document.querySelector('#app').innerHTML = `
         <section class="section">
-          <h2>Welcome</h2>
-          <p>NOVA helps you discover your purpose profile. NAVI turns it into resumes, letters, and roles.</p>
+          <h1>Welcome to NOVA + NAVI</h1>
+          <p class="stat"><strong>🌍 Did you know?</strong> <em>89% of people say they don’t truly know their purpose.</em></p>
+          <p>That’s why NOVA exists — she was designed to help you <strong>discover and understand your purpose</strong> by uncovering the traits that make you who you are.</p>
+
+          <div class="phase">
+            <h2>Phase 1 — Who You Are (NOVA)</h2>
+            <p>NOVA is on your side. She gently guides you through selecting the traits that describe you best. From there, she connects those traits to deeper attributes, and reveals career paths where your strengths naturally fit.</p>
+          </div>
+
+          <div class="phase">
+            <h2>Phase 2 — Where You’re Going (NAVI)</h2>
+            <p>Once you’ve discovered who you are, NAVI takes your profile and turns it into action:</p>
+            <ul>
+              <li>Resumes & cover letters that highlight your strengths</li>
+              <li>Career roles aligned with your attributes</li>
+              <li>Training & steps to help you grow into your purpose</li>
+            </ul>
+          </div>
+
+          <div class="roadmap">
+            <h3>How it works</h3>
+            <ol>
+              <li><strong>Discover with NOVA.</strong> Choose traits that describe you.</li>
+              <li><strong>See your snapshot.</strong> NOVA shows your attributes and aligned roles.</li>
+              <li><strong>Reflect.</strong> Pause and consider where you are in your journey.</li>
+              <li><strong>Choose a role.</strong> Pick a focus role that fits your purpose.</li>
+              <li><strong>Build with NAVI.</strong> Turn discovery into resumes, letters, and steps.</li>
+            </ol>
+          </div>
+
+          <p class="closing">✨ This isn’t just job matching — it’s uncovering who you were designed to be, and then charting where you can go.</p>
+
           <div class="actions">
             <a class="btn primary" href="#/nova">Start with NOVA</a>
-            <a class="btn ghost" href="#/navi">Jump to NAVI</a>
           </div>
         </section>
       `;
