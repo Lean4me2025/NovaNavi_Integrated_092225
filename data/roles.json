@@ -1,50 +1,75 @@
 [
   {
     "title": "Process Engineer",
+    "domain": "Business/Operations",
     "summary": "Optimize workflows, remove waste, and drive operational excellence.",
     "signals": [
-      "Process‑Focused",
-      "Data‑Driven",
+      "Process-Focused",
+      "Data-Driven",
       "Analytical",
-      "Quality‑Focused",
+      "Quality-Focused",
       "Planner"
+    ],
+    "path": [
+      "Learn Lean/Six Sigma basics",
+      "Run a Kaizen on a real process",
+      "Build a before/after metrics report"
     ]
   },
   {
     "title": "Product Manager",
+    "domain": "Leadership/Product",
     "summary": "Own product outcomes from discovery to launch.",
     "signals": [
       "Communicator",
       "Strategic",
       "Visionary",
       "Collaborative",
-      "Results‑Driven"
+      "Results-Driven"
+    ],
+    "path": [
+      "Ship a PRD for a real idea",
+      "Interview 5 users",
+      "Run a small A/B test and analyze results"
     ]
   },
   {
     "title": "Data Analyst",
+    "domain": "Data/Analysis",
     "summary": "Turn raw data into insights and dashboards.",
     "signals": [
       "Analytical",
-      "Data‑Driven",
+      "Data-Driven",
       "Detail-Oriented",
       "Systems Thinker",
       "Researcher"
+    ],
+    "path": [
+      "Complete an SQL + spreadsheets mini-project",
+      "Build a dashboard",
+      "Publish a 2\u2011page insight brief"
     ]
   },
   {
     "title": "Operations Manager",
-    "summary": "Run day‑to‑day operations with reliability and quality.",
+    "domain": "Business/Operations",
+    "summary": "Run day-to-day operations with reliability and quality.",
     "signals": [
       "Organizer",
       "Reliable",
-      "Quality‑Focused",
+      "Quality-Focused",
       "Calm Under Pressure",
       "Planner"
+    ],
+    "path": [
+      "Create a SOP for a core process",
+      "Implement a KPI weekly board",
+      "Lead a cross\u2011team standup for 2 weeks"
     ]
   },
   {
     "title": "Customer Success Lead",
+    "domain": "Business/Customer",
     "summary": "Guide customers to value and retention.",
     "signals": [
       "Communicator",
@@ -52,32 +77,50 @@
       "Problem Solver",
       "Connector",
       "Listener"
+    ],
+    "path": [
+      "Design a 30\u201160\u201190 onboarding plan",
+      "Collect 3 customer testimonials",
+      "Create a renewal risk playbook"
     ]
   },
   {
     "title": "Ministry Coordinator",
+    "domain": "Ministry/Service",
     "summary": "Lead and care for teams and outreach.",
     "signals": [
-      "Ministry‑Minded",
-      "Servant‑Leader",
+      "Ministry-Minded",
+      "Servant-Leader",
       "Compassionate",
       "Mentor",
       "Organizer"
+    ],
+    "path": [
+      "Plan a service project",
+      "Develop a volunteer schedule",
+      "Create a follow\u2011up/discipleship flow"
     ]
   },
   {
     "title": "Software Developer",
+    "domain": "Technology/Engineering",
     "summary": "Design and build reliable software systems.",
     "signals": [
       "Technologist",
       "Builder",
       "Problem Solver",
       "Disciplined",
-      "Hands‑On"
+      "Hands-On"
+    ],
+    "path": [
+      "Ship a small web app",
+      "Write tests & CI",
+      "Contribute to an open\u2011source issue"
     ]
   },
   {
     "title": "UX Designer",
+    "domain": "Creative/UX",
     "summary": "Craft intuitive experiences through research and design.",
     "signals": [
       "Design Thinker",
@@ -85,32 +128,45 @@
       "Researcher",
       "Storyteller",
       "Empathetic"
+    ],
+    "path": [
+      "Run 3 usability tests",
+      "Produce a wireframe + prototype",
+      "Deliver a case study write\u2011up"
     ]
   },
   {
     "title": "Sales Executive",
+    "domain": "Business/Growth",
     "summary": "Drive new revenue with consultative selling.",
     "signals": [
       "Persuasive",
       "Connector",
-      "Results‑Driven",
+      "Results-Driven",
       "Courageous",
       "Communicator"
+    ],
+    "path": [
+      "Build a target list",
+      "Write a discovery call script",
+      "Close 3 meetings and report pipeline"
     ]
   },
   {
     "title": "Program Director",
-    "summary": "Coordinate cross‑functional initiatives to deliver outcomes.",
-    "signals": {
-      "title": "Program Director",
-      "summary": "Coordinate cross‑functional initiatives to deliver outcomes.",
-      "signals": [
-        "Strategic",
-        "Organizer",
-        "Facilitator",
-        "Collaborative",
-        "Servant‑Leader"
-      ]
-    }
+    "domain": "Leadership/Program",
+    "summary": "Coordinate cross-functional initiatives to deliver outcomes.",
+    "signals": [
+      "Strategic",
+      "Organizer",
+      "Facilitator",
+      "Collaborative",
+      "Servant-Leader"
+    ],
+    "path": [
+      "Create a program charter",
+      "Map stakeholders + RACI",
+      "Publish a quarterly roadmap"
+    ]
   }
 ]

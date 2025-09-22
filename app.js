@@ -1,4 +1,5 @@
 import { Nova } from './modules/nova.js';
+import { Reflection } from './modules/reflection.js';
 import { Navi } from './modules/navi.js';
 
 const el = (sel) => document.querySelector(sel);
@@ -13,13 +14,17 @@ const state = {
 function render(route){
   const app = el('#app');
   switch(route){
+    case 'reflect':
+      document.querySelector('#app').innerHTML = Reflection.view(state);
+      Reflection.mount(state);
+      break;
     case 'home':
       app.innerHTML = `
         <section class="section">
           <h2>Welcome</h2>
           <p>NOVA helps you discover your purpose profile. NAVI turns it into resumes, letters, and roles.</p>
           <div class="actions">
-            <a class="btn primary" href="#/nova">Start with NOVA</a>
+            <a class="btn primary" href="#/reflect">Start with Reflection</a>
             <a class="btn ghost" href="#/navi">Jump to NAVI</a>
           </div>
         </section>
