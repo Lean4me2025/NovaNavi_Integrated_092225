@@ -1,54 +1,36 @@
-:root{--bg1:#0a0f29;--bg2:#0f1835;--ink:#e8ecff;--muted:#b9c3ff;--line:rgba(255,255,255,.22);--accent:#5d7bff;--accent2:#6ae0ff}
+:root{--bg1:#0a0f29;--bg2:#0f1835;--ink:#e8ecff;--muted:#b9c3ff;--line:rgba(255,255,255,.22);--accent:#5d7bff}
 *{box-sizing:border-box}
-body.theme-dark{margin:0;background:radial-gradient(1200px 600px at 30% -10%, #16245a, transparent), radial-gradient(1200px 600px at 80% 120%, #121a44, transparent), linear-gradient(180deg, var(--bg1), var(--bg2)); color:var(--ink); font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
-.site-header{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line); background:rgba(0,0,0,.2); backdrop-filter: blur(6px)}
-.brand{font-weight:700;letter-spacing:.3px}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;color:var(--ink);
+background:radial-gradient(1200px 600px at 30% -10%, #16245a, transparent), radial-gradient(1200px 600px at 80% 120%, #121a44, transparent), linear-gradient(180deg, var(--bg1), var(--bg2));}
+.site-header{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line);background:rgba(0,0,0,.2)}
 .topnav a{color:var(--muted);text-decoration:none;margin-left:1rem}
-.section{padding:1.2rem 1.5rem}
-.card{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:1rem; margin:1rem}
-.stat{margin:.5rem 0 1rem}
-h1,h2,h3{margin:.3rem 0 .5rem}
+.section{padding:1.2rem 1.5rem}.card{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:1rem; margin:1rem}
 .btn{border:1px solid var(--line); background:#1a2458; color:#fff; border-radius:.6rem; padding:.55rem .9rem; text-decoration:none; cursor:pointer}
-.btn.primary{background:var(--accent); border-color:#6f89ff}
-.steps-row{display:flex;gap:.75rem;flex-wrap:nowrap;overflow-x:auto;padding-bottom:.25rem;margin:.6rem 0}
-.step-box{flex:1;min-width:200px;background:#1a2458;border:1px solid var(--line);border-radius:.8rem;padding:.85rem 1rem;position:relative;color:#eef1ff;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.step-box::after{content:"→";position:absolute;right:-.55rem;top:50%;transform:translateY(-50%);opacity:.55;pointer-events:none}
-.steps-row .step-box:last-child::after{content:""}
-.steps-cta{display:flex;justify-content:flex-end;margin-top:.75rem;position:relative;z-index:10}
-.site-footer{padding:1rem;text-align:center;color:var(--muted);border-top:1px solid var(--line); margin-top:2rem; background:rgba(0,0,0,.2)}
-
-/* Sticky actions on traits */
-.sticky-actions{position:sticky; top:0; z-index:5; display:flex; gap:.5rem; align-items:center; padding:.5rem; margin:.5rem 0; background:rgba(10,15,41,.8); border:1px solid rgba(255,255,255,.18); border-radius:.6rem; backdrop-filter: blur(6px)}
-.input{flex:1; padding:.5rem .6rem; border-radius:.4rem; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.04); color:#e8ecff}
-
-/* Trait cards */
-.traits{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;margin-top:.85rem}
-.trait-card{display:flex;flex-direction:column;gap:.35rem;padding:.7rem .9rem;background:#15204a;border:1px solid var(--line);border-radius:.7rem;cursor:pointer;user-select:none;transition:transform .12s ease,border-color .12s ease,background .12s ease}
-.trait-card h5{margin:0;font-size:1rem;color:#fff}
-.trait-card p{margin:0;color:rgba(255,255,255,.88);font-size:.92rem;line-height:1.25rem}
-.trait-card:hover{transform:translateY(-2px);border-color:#7ea1ff}
+.btn.primary{background:var(--accent)}
+/* Traits */
+.sticky-actions{position:sticky;top:0;display:flex;gap:.5rem;padding:.5rem;margin:.5rem 0;background:rgba(10,15,41,.8);border:1px solid rgba(255,255,255,.18);border-radius:.6rem}
+.input{flex:1;padding:.5rem .6rem;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);color:#e8ecff;border-radius:.4rem}
+.traits{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.7rem;margin-top:.85rem}
+.trait-card{display:flex;flex-direction:column;gap:.35rem;padding:.7rem .9rem;background:#15204a;border:1px solid var(--line);border-radius:.7rem;cursor:pointer}
 .trait-card.selected{background:#1f2d6e;border-color:#90a8ff;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-
-/* Snapshot badges + role cards */
+/* Snapshot */
 .badges,.role-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.7rem;margin:.75rem 0}
 .badge,.role-card{background:#15204a;border:1px solid var(--line);border-radius:.7rem;padding:.6rem .85rem}
 .badge h6,.role-card h6{margin:0 0 .25rem 0;font-size:.95rem;color:#fff}
 .badge p,.role-card p{margin:0;color:rgba(255,255,255,.86);font-size:.9rem}
-
-/* Reflection cards */
+/* Info + distinct roles */
+.info-block{background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.25); border-radius:.7rem; padding:.7rem .9rem; margin:.6rem 0 .2rem}
+.role-cards .role-card{background:#0f2b22;border-color:#3bd18b}
+.role-cards .role-card h6{color:#b4ffd9}
+.role-cards .role-card p{color:#d2ffe9}
+/* Reflection */
 .reflect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem;margin-top:.9rem}
-.reflect-card{background:#15204a;border:1px solid var(--line);border-radius:.8rem;padding:.85rem;cursor:pointer;transition:transform .12s ease,border-color .12s ease}
-.reflect-card:hover{transform:translateY(-2px);border-color:#82a2ff}
-.reflect-card.selected{background:#1f2d6e;border-color:#90a8ff;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-.reflect-hint{color:#b9c3ff;margin:.2rem 0 .6rem}
-
+.reflect-card{background:#15204a;border:1px solid var(--line);border-radius:.8rem;padding:.85rem;cursor:pointer}
+.reflect-card.selected{background:#1f2d6e;border-color:#90a8ff}
 /* Staircase */
-.stair{margin-top:.8rem}
-.stair-step{background:#15204a;border:1px solid var(--line);border-radius:.8rem;padding:.75rem 1rem;margin:.5rem 0;position:relative;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.stair-step h3{margin:.1rem 0 .5rem}
-.stair-step .content{display:none;color:rgba(255,255,255,.9)}
+.stair-step{background:#15204a;border:1px solid var(--line);border-radius:.8rem;padding:.75rem 1rem;margin:.5rem 0;position:relative}
+.stair-step .content{display:none}
 .stair-step.active .content{display:block}
-.stair-step .toggle{position:absolute;right:.8rem;top:.8rem;opacity:.8}
 .stair-step:nth-child(1){margin-left:0}
 .stair-step:nth-child(2){margin-left:2rem}
 .stair-step:nth-child(3){margin-left:4rem}
@@ -58,22 +40,3 @@ h1,h2,h3{margin:.3rem 0 .5rem}
 @media (max-width:700px){
   .stair-step{margin-left:0 !important}
 }
-
-/* Plans */
-.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;margin-top:.9rem}
-.plan{background:#15204a;border:1px solid var(--line);border-radius:.8rem;padding:.85rem;position:relative}
-.plan .rec{position:absolute;right:.6rem;top:.6rem;background:#5d7bff;padding:.2rem .4rem;border-radius:.4rem;font-size:.75rem}
-.plan h4{margin:.1rem 0 .4rem}
-.plan ul{margin:.4rem 0 .2rem 1rem}
-
-/* Info block on Snapshot */
-.info-block{background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.25); border-radius:.7rem; padding:.7rem .9rem; margin:.6rem 0 0.2rem}
-.info-block h3{margin:.1rem 0 .4rem}
-.info-block p{margin:0; color:rgba(255,255,255,.92)}
-
-/* Make Aligned Roles visually distinct from traits */
-.role-cards .role-card{background:#0f2b22; border-color:#3bd18b}  /* deep teal */
-.role-cards .role-card h6{color:#b4ffd9}
-.role-cards .role-card p{color:#d2ffe9}
-/* Add a subtle label underline for the section heading */
-.section h3.section-label{border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:.25rem; margin-top:.8rem}
