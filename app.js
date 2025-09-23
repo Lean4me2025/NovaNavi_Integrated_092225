@@ -131,19 +131,28 @@ function render(route){
 }
 
 function routeFromHash(){
-  const h = location.hash.replace('#/','').trim();
+  const raw = location.hash || '#/home';
+  const h = raw.replace(/^#+/, '').replace(/^\/+/, '').trim();
   return h || 'home';
 }
 
 window.addEventListener('hashchange', () => render(routeFromHash()));
 
-// Fallback: handle in-page hash links reliably (even if default is prevented by overlays)
+
+// Fallback: handle in-page hash links reliably (allow default, then enforce route)
 document.addEventListener('click', (e) => {
   const a = e.target.closest('a[href^="#/"]');
   if (!a) return;
-  e.preventDefault();
-  const href = a.getAttribute('href');
-  if (href) location.hash = href;
+  const href = a.getAttribute('href') || '#/home';
+  // Do NOT prevent default; let the browser update the hash,
+  // then ensure it's exactly one # and parsed correctly.
+  setTimeout(() => {
+    if (location.hash !== href) {
+      // Normalize to a single # and '/route' format
+      const clean = href.replace(/^#/, '');
+      location.hash = clean;
+    }
+  }, 0);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
