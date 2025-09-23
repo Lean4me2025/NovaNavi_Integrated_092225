@@ -55,7 +55,7 @@ function homeView(){
             <h4>Choose a role</h4>
             <p>Pick a focus role that fits.</p>
           </div>
-          <div class="step-box">
+          <div class="step-box last-step">
             <h4>Build with NAVI</h4>
             <p>Turn discovery into resumes, letters, steps.</p>
           </div>
