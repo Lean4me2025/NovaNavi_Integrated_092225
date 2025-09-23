@@ -146,3 +146,13 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
   .steps-cta{justify-content:center}
   .steps-cta .btn.primary::before{display:none}
 }
+
+
+/* --- Patch 009d: ensure CTA is clickable --- */
+.steps-cta{position:relative; z-index: 5;}
+.steps-cta .btn.primary{position:relative; z-index: 6;}
+/* Decorative arrows/lines should not block clicks */
+.step-box::after,
+.step-box.last-step::after,
+.steps-cta .btn.primary::before { pointer-events: none; }
+

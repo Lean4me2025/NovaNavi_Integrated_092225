@@ -136,6 +136,16 @@ function routeFromHash(){
 }
 
 window.addEventListener('hashchange', () => render(routeFromHash()));
+
+// Fallback: handle in-page hash links reliably (even if default is prevented by overlays)
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#/"]');
+  if (!a) return;
+  e.preventDefault();
+  const href = a.getAttribute('href');
+  if (href) location.hash = href;
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
