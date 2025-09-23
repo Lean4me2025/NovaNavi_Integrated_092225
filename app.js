@@ -1,96 +1,85 @@
-// Shared helpers
-const go = (page) => window.location.href = page;
-const save = (k,v) => localStorage.setItem(k, JSON.stringify(v));
-const load = (k, d=null) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e){ return d; } };
+// Router + simple persistence across steps
+(function(){
+  const views = {
+    welcome: document.getElementById('view-welcome'),
+    traits: document.getElementById('view-traits'),
+    results: document.getElementById('view-results'),
+    reflection: document.getElementById('view-reflection'),
+    choosePath: document.getElementById('view-choose-path'),
+    where: document.getElementById('view-where'),
+    plans: document.getElementById('view-plans')
+  };
+  const crumbs = document.getElementById('crumbs');
 
-// Trait list (50)
-const TRAITS = [
-  "Analytical", "Creative", "Empathetic", "Leader", "Detail-Oriented", "Strategic",
-  "Communicator", "Problem Solver", "Organizer", "Curious", "Resilient", "Adaptable",
-  "Collaborative", "Independent", "Visionary", "Innovative", "Hands-on", "Process-Driven",
-  "Data-Driven", "Customer-Centric", "Teacher", "Mentor", "Researcher", "Builder",
-  "Planner", "Finisher", "Big-Picture", "Practical", "Ethical", "Calm Under Pressure",
-  "Persuasive", "Listener", "Fast Learner", "Technical", "Design-Thinking", "Systems-Oriented",
-  "Quality-Focused", "Service-Oriented", "Entrepreneurial", "Financially Savvy", "Results-Focused",
-  "Growth Mindset", "Storyteller", "Networker", "Decision-Maker", "Change Agent",
-  "Curator", "Reliable", "Diligent", "Resourceful"
-];
-
-// Render traits grid if container exists
-function renderTraits() {
-  const host = document.getElementById('traits-grid');
-  if (!host) return;
-  host.innerHTML = '';
-  const selected = new Set(load('nova.selectedTraits', []));
-  TRAITS.forEach((t, i) => {
-    const id = `trait_${i}`;
-    const item = document.createElement('label');
-    item.className = 'card';
-    item.style.display = 'flex';
-    item.style.alignItems = 'center';
-    item.style.gap = '10px';
-    item.innerHTML = `
-      <input type="checkbox" id="${id}" ${selected.has(t) ? 'checked' : ''}/>
-      <span>${t}</span>
-    `;
-    item.querySelector('input').addEventListener('change', (e) => {
-      if (e.target.checked) { selected.add(t); } else { selected.delete(t); }
-      save('nova.selectedTraits', Array.from(selected));
-    });
-    host.appendChild(item);
-  });
-}
-
-// Generate aligned roles (placeholder demo logic)
-function computeAlignedRoles(traits) {
-  // Very simple mapping demo; replace with your scoring later
-  const roles = [
-    { role: "Process Engineer", why: "Strong in Process/Quality/Systems traits", match: 0.86 },
-    { role: "Product Manager", why: "Blend of Strategy, Communication, Decision-making", match: 0.83 },
-    { role: "Data Analyst", why: "Analytical, Curious, Data-Driven", match: 0.81 },
-    { role: "Operations Manager", why: "Organizer, Results-Focused, Calm Under Pressure", match: 0.8 },
-    { role: "Innovation Lead", why: "Creative, Visionary, Change Agent", match: 0.78 },
-  ];
-  // Bump scores if traits include certain anchors
-  const bump = (key, inc) => { if (traits.includes(key)) roles.forEach(r => r.match = +(r.match + inc).toFixed(2)); };
-  if (traits.includes("Process-Driven")) bump("Process-Driven", 0.02);
-  if (traits.includes("Data-Driven")) bump("Data-Driven", 0.02);
-  if (traits.includes("Leader")) bump("Leader", 0.01);
-  return roles.sort((a,b)=>b.match-a.match);
-}
-
-function renderResults() {
-  const host = document.getElementById('roles-table');
-  if (!host) return;
-  const traits = load('nova.selectedTraits', []);
-  const roles = computeAlignedRoles(traits);
-  host.innerHTML = roles.map(r => `
-    <tr>
-      <td>${r.role}</td>
-      <td>${r.why}</td>
-      <td>${Math.round(r.match*100)}%</td>
-    </tr>
-  `).join('');
-  // Show selected trait chips
-  const chips = document.getElementById('selected-traits');
-  if (chips) {
-    chips.innerHTML = traits.map(t => `<span class="badge">${t}</span>`).join(' ');
+  function show(view){
+    Object.values(views).forEach(v => v.classList.add('hide'));
+    views[view].classList.remove('hide');
+    crumbs.textContent = views[view].dataset.step;
+    location.hash = view;
   }
-}
 
-function initReflection() {
-  const area = document.getElementById('reflection-notes');
-  if (!area) return;
-  area.value = load('nova.reflection', "") || "";
-  document.getElementById('save-reflection').addEventListener('click', () => {
-    save('nova.reflection', area.value);
-    const msg = document.getElementById('saved-msg');
-    msg.textContent = "Saved ✓";
-    setTimeout(()=> msg.textContent = "", 1500);
+  // handle button navigation
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-goto]');
+    if(!btn) return;
+    const next = btn.getAttribute('data-goto');
+    if(next === 'where-are-you') show('where');
+    else show(next.replace(/-/g,'')); // normalize ids like 'choose-path'
   });
-}
-document.addEventListener('DOMContentLoaded', () => {
-  renderTraits();
-  renderResults();
-  initReflection();
-});
+
+  // capture selected path
+  let chosenPath = null;
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-path]');
+    if(!btn) return;
+    chosenPath = btn.getAttribute('data-path');
+    localStorage.setItem('navi_chosen_path', chosenPath);
+  });
+
+  // reflection persistence
+  const keyWhere = 'nova_reflect_where_am_i';
+  const keyMile = 'nova_reflect_milestones';
+  const txtWhere = document.getElementById('where-am-i');
+  const inputM = document.getElementById('milestones');
+  const saveBtn = document.getElementById('save-reflection');
+  function restoreReflection(){
+    if(txtWhere) txtWhere.value = localStorage.getItem(keyWhere) || '';
+    if(inputM) inputM.value = localStorage.getItem(keyMile) || '';
+  }
+  function saveReflection(){
+    if(txtWhere) localStorage.setItem(keyWhere, txtWhere.value.trim());
+    if(inputM) localStorage.setItem(keyMile, inputM.value.trim());
+    alert('Reflection saved.');
+  }
+  if(saveBtn) saveBtn.addEventListener('click', saveReflection);
+
+  // where-are-you persistence
+  const selStatus = document.getElementById('status');
+  const selResume = document.getElementById('resume');
+  const inputTime = document.getElementById('time');
+  const saveWhere = document.getElementById('save-where');
+  function restoreWhere(){
+    if(selStatus) selStatus.value = localStorage.getItem('navi_status') || '';
+    if(selResume) selResume.value = localStorage.getItem('navi_resume') || '';
+    if(inputTime) inputTime.value = localStorage.getItem('navi_time') || '';
+  }
+  function saveWhereNow(){
+    if(selStatus) localStorage.setItem('navi_status', selStatus.value);
+    if(selResume) localStorage.setItem('navi_resume', selResume.value);
+    if(inputTime) localStorage.setItem('navi_time', inputTime.value);
+    alert('Saved.');
+  }
+  if(saveWhere) saveWhere.addEventListener('click', saveWhereNow);
+
+  // init route
+  const start = (location.hash || '#welcome').replace('#','');
+  const valid = {welcome:1, traits:1, results:1, reflection:1, 'choose-path':1, where:1, plans:1};
+  if(!valid[start]) show('welcome');
+  else {
+    if(start === 'choose-path') show('choosePath');
+    else if(start === 'where-are-you') show('where');
+    else show(start);
+  }
+  restoreReflection();
+  restoreWhere();
+})();

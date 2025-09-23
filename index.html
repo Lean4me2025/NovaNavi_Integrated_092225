@@ -1,40 +1,290 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA • Welcome</title>
-<link rel="stylesheet" href="styles.css">
-<script defer src="app.js"></script>
-</head><body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>NOVA ➜ NAVI • Integrated Flow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+  <!-- PayHip script (once) for all Buy buttons -->
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+</head>
+<body class="page">
+  <header class="topbar">
+    <h1 class="brand">NOVA → NAVI</h1>
+    <nav class="crumbs" id="crumbs">Welcome</nav>
+  </header>
 
-<div class="header">
-  <div class="brand"><div class="logo"></div> NOVA</div>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="traits.html">Traits</a>
-    <a href="results.html">Results</a>
-    <a href="reflection.html">Reflection</a>
-    <a href="navi.html">Navi</a>
-  </nav>
-</div>
+  <main class="wrap">
+    <!-- 1) WELCOME -->
+    <section class="view" id="view-welcome" data-step="Welcome">
+      <section class="hero">
+        <h2>Welcome to NOVA</h2>
+        <p class="lead">Discover your strengths, choose your path, then go further with NAVI.</p>
+      </section>
 
-<div class="container">
-  <div class="hero">
-    <span class="kicker">Welcome to Nova</span>
-    <h1>Discover your purpose.<br/>Step into aligned work.</h1>
-    <p class="lead">Nova scans your strengths and maps them to roles where you naturally thrive. Start with the 50-trait discovery, then see your aligned roles, reflect, and flow into Navi for action.</p>
-    <div class="btnrow">
-      <button class="button" onclick="go('traits.html')">Start with Nova</button>
-      <a class="button secondary" href="results.html">View Results</a>
-    </div>
-  </div>
-  <div class="card block">
-    <h2>What to expect</h2>
-    <ul class="small">
-      <li>Fast 50‑trait check — pick what feels true.</li>
-      <li>See a focused list of roles where your strengths already align.</li>
-      <li>Reflect on the results to sharpen insight.</li>
-      <li>Continue into Navi to build your plan, resume, and outreach.</li>
-    </ul>
-  </div>
-</div>
-<div class="footer small">© 2025 Nova • Bridge to Navi</div>
-</body></html>
+      <section class="card">
+        <h3>What to expect</h3>
+        <ol class="bullets">
+          <li><strong>Trait Selection</strong> → choose the 50 traits that describe you.</li>
+          <li><strong>Results</strong> → aligned roles and insights.</li>
+          <li><strong>Reflection</strong> → “Where am I?” • “Where am I going?”</li>
+          <li><strong>Choose Your Path</strong> → pick your track.</li>
+          <li><strong>Where Are You</strong> → quick status check to tailor NAVI.</li>
+          <li><strong>NAVI Plans</strong> → select your plan and checkout.</li>
+        </ol>
+      </section>
+
+      <section class="actions">
+        <button class="btn primary" data-goto="traits">Start → Trait Selection</button>
+      </section>
+    </section>
+
+    <!-- 2) TRAIT SELECTION (placeholder UI scaffold) -->
+    <section class="view hide" id="view-traits" data-step="Trait Selection">
+      <section class="hero">
+        <h2>Trait Selection</h2>
+        <p class="lead">Pick the traits that best describe you. (50 total in the live build.)</p>
+      </section>
+
+      <section class="card">
+        <div class="grid traits">
+          <!-- Sample placeholders; replace with your live 50-trait grid -->
+          <label class="check"><input type="checkbox" /> Leadership</label>
+          <label class="check"><input type="checkbox" /> Systems Thinking</label>
+          <label class="check"><input type="checkbox" /> Analysis</label>
+          <label class="check"><input type="checkbox" /> Collaboration</label>
+          <label class="check"><input type="checkbox" /> Communication</label>
+          <label class="check"><input type="checkbox" /> Creativity</label>
+          <label class="check"><input type="checkbox" /> Problem Solving</label>
+          <label class="check"><input type="checkbox" /> Empathy</label>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="welcome">← Back</button>
+        <button class="btn primary" data-goto="results">See Results</button>
+      </section>
+    </section>
+
+    <!-- 3) RESULTS -->
+    <section class="view hide" id="view-results" data-step="Results">
+      <section class="hero">
+        <h2>Your Nova Results</h2>
+        <p class="lead">
+          These results synthesize your selected traits against skills/requirements across 400+ career paths
+          to surface roles where your strengths are already aligned.
+        </p>
+      </section>
+
+      <section class="card">
+        <h3>Aligned Roles (example)</h3>
+        <ul class="bullets">
+          <li>Role A — people leadership • systems thinking</li>
+          <li>Role B — analysis • communication</li>
+          <li>Role C — operations • collaboration</li>
+        </ul>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="traits">← Back to Traits</button>
+        <button class="btn primary" data-goto="reflection">Continue → Reflection</button>
+      </section>
+    </section>
+
+    <!-- 4) REFLECTION -->
+    <section class="view hide" id="view-reflection" data-step="Reflection">
+      <section class="hero">
+        <h2>Reflection</h2>
+        <p class="lead">Pause and orient before choosing your path.</p>
+      </section>
+
+      <section class="card">
+        <h3>Where am I?</h3>
+        <p class="muted">Summarize your current position, strengths revealed, and any gaps you’re noticing.</p>
+        <textarea id="where-am-i" class="input" rows="6" placeholder="Example: I’m strongest in people-centered leadership and systems thinking..."></textarea>
+      </section>
+
+      <section class="card">
+        <h3>Where am I going?</h3>
+        <div class="grid">
+          <label class="check"><input type="checkbox" /> Target 2–3 aligned roles</label>
+          <label class="check"><input type="checkbox" /> Upgrade resume + cover letters</label>
+          <label class="check"><input type="checkbox" /> Map skill gaps & choose training</label>
+          <label class="check"><input type="checkbox" /> Set up filtered job searches + alerts</label>
+          <label class="check"><input type="checkbox" /> Get company intelligence before I apply</label>
+        </div>
+        <label class="block mt">
+          Milestones (optional)
+          <input id="milestones" class="input" type="text" placeholder="Ex: 5 tailored applications/week, 2 interviews/month…" />
+        </label>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="results">← Back to Results</button>
+        <button id="save-reflection" class="btn">Save Reflection</button>
+        <button class="btn primary" data-goto="choose-path">Continue → Choose Your Path</button>
+      </section>
+    </section>
+
+    <!-- 5) CHOOSE YOUR PATH -->
+    <section class="view hide" id="view-choose-path" data-step="Choose Your Path">
+      <section class="hero">
+        <h2>Choose Your Path</h2>
+        <p class="lead">Pick the primary track that fits your immediate goal. NAVI tailors next steps accordingly.</p>
+      </section>
+
+      <section class="plans three">
+        <article class="plan">
+          <h3>Job Seeker</h3>
+          <ul class="bullets">
+            <li>Target roles + resume/cover optimization</li>
+            <li>Search filters + alerts</li>
+            <li>Interview prep basics</li>
+          </ul>
+          <div class="cta"><button class="btn" data-path="job" data-goto="where-are-you">Select →</button></div>
+        </article>
+        <article class="plan featured">
+          <div class="badge">Common</div>
+          <h3>Career Pivot</h3>
+          <ul class="bullets">
+            <li>Transferable skills mapping</li>
+            <li>Gap-bridging training plan</li>
+            <li>Targeted applications</li>
+          </ul>
+          <div class="cta"><button class="btn" data-path="pivot" data-goto="where-are-you">Select →</button></div>
+        </article>
+        <article class="plan">
+          <h3>Entrepreneur</h3>
+          <ul class="bullets">
+            <li>Customer/problem fit checklist</li>
+            <li>Lean launch steps</li>
+            <li>Partner & funding options</li>
+          </ul>
+          <div class="cta"><button class="btn" data-path="founder" data-goto="where-are-you">Select →</button></div>
+        </article>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="reflection">← Back to Reflection</button>
+        <button class="btn primary" data-goto="where-are-you">Continue → Where Are You</button>
+      </section>
+    </section>
+
+    <!-- 6) WHERE ARE YOU -->
+    <section class="view hide" id="view-where" data-step="Where Are You">
+      <section class="hero">
+        <h2>Where Are You</h2>
+        <p class="lead">Quick status to personalize your NAVI experience.</p>
+      </section>
+
+      <section class="card">
+        <div class="grid">
+          <label class="block">Current status
+            <select id="status" class="input">
+              <option value="">Select one…</option>
+              <option>Just exploring</option>
+              <option>Actively applying</option>
+              <option>Interviewing</option>
+              <option>Offer stage</option>
+              <option>Starting a venture</option>
+            </select>
+          </label>
+          <label class="block">Resume readiness
+            <select id="resume" class="input">
+              <option value="">Select one…</option>
+              <option>Need a starter</option>
+              <option>Have a resume (needs rewrite)</option>
+              <option>Polished (needs targeting)</option>
+            </select>
+          </label>
+          <label class="block">Time commitment (hrs/week)
+            <input id="time" class="input" type="number" min="0" placeholder="e.g., 5" />
+          </label>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="choose-path">← Back to Choose Your Path</button>
+        <button id="save-where" class="btn">Save</button>
+        <button class="btn primary" data-goto="plans">Continue → NAVI Plans</button>
+      </section>
+    </section>
+
+    <!-- 7) NAVI PLANS (OFFERS) -->
+    <section class="view hide" id="view-plans" data-step="NAVI Plans">
+      <section class="hero">
+        <h2>Select Your NAVI Plan</h2>
+        <p class="lead">Choose how far you want NAVI to take you.</p>
+      </section>
+
+      <section class="plans three">
+        <!-- STARTER -->
+        <article class="plan">
+          <h3>Starter</h3>
+          <div class="price">$29.99<span>/mo</span></div>
+          <ul class="bullets">
+            <li>Nova results integrated</li>
+            <li>Resume builder (basic)</li>
+            <li>Standard cover letter generator</li>
+            <li>Aligned roles suggestions</li>
+            <li>1 Pro doc preview / month</li>
+          </ul>
+          <div class="cta">
+            <a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Now</a>
+          </div>
+        </article>
+
+        <!-- PRO -->
+        <article class="plan featured">
+          <div class="badge">Most Popular</div>
+          <h3>Pro</h3>
+          <div class="price">$99<span>/mo</span></div>
+          <ul class="bullets">
+            <li>Everything in Starter</li>
+            <li>Resume rewrite AI (enhanced)</li>
+            <li>Unlimited tailored cover letters</li>
+            <li>Advanced job filters + saved searches</li>
+            <li>Company intel basics</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="cta">
+            <a href="https://payhip.com/b/knC1Z" class="payhip-buy-button" data-theme="green" data-product="knC1Z">Buy Now</a>
+          </div>
+        </article>
+
+        <!-- PRO SUITE -->
+        <article class="plan">
+          <h3>Pro Suite</h3>
+          <div class="price">$149<span>/mo</span></div>
+          <ul class="bullets">
+            <li>Everything in Pro</li>
+            <li>Deep company intelligence reports</li>
+            <li>Advanced filters & targeting</li>
+            <li>Resume updates + quarterly tuning</li>
+            <li>Priority coaching / support</li>
+          </ul>
+          <div class="cta">
+            <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="card mt-xl">
+        <h3>“How to Know Your Purpose” — Companion Download</h3>
+        <p class="muted">Keep your compass aligned as you build momentum.</p>
+        <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
+      </section>
+
+      <section class="actions">
+        <button class="btn" data-goto="where-are-you">← Back</button>
+      </section>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>© NOVA & NAVI • Folded, integrated flow</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
