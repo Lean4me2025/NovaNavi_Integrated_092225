@@ -15,12 +15,18 @@
 <section class="card">
   <h2 style="margin-top:0">Select your traits</h2>
   <div id="traits" class="traits"></div>
-  <div class="footer-cta" style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
+  <div class="footer-cta" style="display:flex;justify-content:space-between;gap:10px;margin-top:16px">
     <a class="btn" href="/index.html">Back</a>
-    <a class="btn btn-primary" id="go-results">See My Results</a>
+    <div>
+      <button class="btn" id="clear-traits" type="button">Clear selections</button>
+      <a class="btn btn-primary" id="go-results">See My Results</a>
+    </div>
   </div>
 </section>
 <script>
+const url = new URL(window.location.href);
+const shouldReset = url.searchParams.get('reset')==='1';
+if(shouldReset){ localStorage.removeItem('nova_traits'); }
 fetch('/data/traits.json').then(r=>r.json()).then(list=>{
   const wrap = document.getElementById('traits');
   const selected = new Set(JSON.parse(localStorage.getItem('nova_traits')||'[]'));
@@ -34,6 +40,11 @@ fetch('/data/traits.json').then(r=>r.json()).then(list=>{
       else selected.delete(name);
     });
     wrap.appendChild(el);
+  });
+  document.getElementById('clear-traits').addEventListener('click',()=>{
+    localStorage.removeItem('nova_traits');
+    selected.clear();
+    document.querySelectorAll('.trait.is-selected').forEach(el=>el.classList.remove('is-selected'));
   });
   document.getElementById('go-results').addEventListener('click',()=>{
     localStorage.setItem('nova_traits', JSON.stringify([...selected]));
