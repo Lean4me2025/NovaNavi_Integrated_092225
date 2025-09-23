@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reflection · NOVA</title>
-  <link rel="stylesheet" href="assets/style.css">
+  
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link rel="stylesheet" href="assets/style.css?v=2">
 </head>
 <body>
 
@@ -45,9 +50,7 @@
 <script>
 const radios = document.querySelectorAll('input[name="where"]');
 const saveBtn = document.getElementById('saveRef');
-radios.forEach(r => r.addEventListener('change', () => {
-  saveBtn.disabled = false;
-}));
+radios.forEach(r => r.addEventListener('change', () => { saveBtn.disabled = false; }));
 saveBtn.addEventListener('click', () => {
   const sel = Array.from(radios).find(r => r.checked)?.value || '';
   localStorage.setItem('nova_reflection_where', sel);

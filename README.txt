@@ -1,25 +1,18 @@
-NOVA + NAVI Integrated Flow (Static Build)
------------------------------------------
-Flow:
-1) index.html (Welcome)
-2) traits.html (Trait Selection — stores to localStorage)
-3) results.html (Snapshot + CTA to Reflection)
-4) reflection.html (Select 1 of 4; Save & Continue enables)
-5) offers.html (2x2 grid of Payhip green buttons; IDs included)
-6) navi.html (NAVI Start; displays your Reflection selection)
+NOVA + NAVI Integrated Flow — v2 (Cache-Busting + 50 Traits Guaranteed)
+------------------------------------------------------------------------
+Sequence:
+1) index.html
+2) traits.html  (renders ALL 50 strengths; count shown in page text)
+3) results.html (shows how many were selected; confirms total available = 50)
+4) reflection.html (Save & Continue unlocks on selection)
+5) offers.html (2x2 grid, green Payhip buttons: GdfU7, knC1Z, re4Hy, N7Lvg)
+6) navi.html
 
-Payhip Buttons (set to Available on your dashboard):
-- Starter: GdfU7
-- Pro: knC1Z
-- Pro Suite: re4Hy
-- Book: N7Lvg
+Built-in fixes:
+- Cache-busting meta headers on every page to prevent stale assets.
+- CSS grid tuned for 4/3/2 columns responsive; no max-height clipping.
+- Traits hardcoded (50 labels) — guaranteed render with no external data.
 
-Notes:
-- Pure static HTML/CSS/JS; no frameworks; deploy anywhere (Vercel-ready).
-- Reflection page enables "Save & Continue" ONLY after a selection is made.
-- Offers page uses Payhip's embed script in <head>; buttons are green by request.
-- Traits page uses placeholder "Trait 01..50" names. Replace as needed by editing traits.html.
-
-Deployment:
-- Upload this folder or the ZIP to your repo; set Vercel to serve index.html as root.
-- Each page has top navigation links for quick QA.
+Deploy:
+- Upload ZIP to your repo, deploy on Vercel.
+- If you still see fewer than 50 traits, hard refresh (Cmd+Shift+R) once.
