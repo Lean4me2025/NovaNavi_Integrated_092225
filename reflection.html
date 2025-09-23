@@ -14,14 +14,43 @@
 <div class="container">
 
 <section class="card">
-  <h2 style="margin-top:0">Where are you today?</h2>
+  <h2 class="page-title">Where are you today?</h2>
   <p class="small">Choose the statement that best describes your current situation.</p>
+
   <div class="grid cols-2" id="refl-opts">
-    <label class="card"><input type="radio" name="refl" value="just-starting"> I'm just starting to explore.</label>
-    <label class="card"><input type="radio" name="refl" value="changing"> I'm changing careers or re-entering.</label>
-    <label class="card"><input type="radio" name="refl" value="growing"> I'm in my lane and want to grow.</label>
-    <label class="card"><input type="radio" name="refl" value="leading"> I'm leading and want to scale impact.</label>
+    <label class="choice box">
+      <input type="radio" name="refl" value="just-starting">
+      <div>
+        <div class="title">I’m just starting to explore.</div>
+        <div class="small">You’re in discovery mode, curious about where your strengths might lead. This stage is about opening doors and testing possibilities.</div>
+      </div>
+    </label>
+
+    <label class="choice box">
+      <input type="radio" name="refl" value="changing">
+      <div>
+        <div class="title">I’m changing careers or re‑entering.</div>
+        <div class="small">You’re in a season of transition, ready to apply your strengths in a new role or return with fresh perspective.</div>
+      </div>
+    </label>
+
+    <label class="choice box">
+      <input type="radio" name="refl" value="growing">
+      <div>
+        <div class="title">I’m in my lane and want to grow.</div>
+        <div class="small">You’ve found your footing, and now you want to stretch, refine, and expand your impact where you are.</div>
+      </div>
+    </label>
+
+    <label class="choice box">
+      <input type="radio" name="refl" value="leading">
+      <div>
+        <div class="title">I’m leading and want to scale impact.</div>
+        <div class="small">You’re influencing others already, and your focus is on multiplying that impact and building legacy.</div>
+      </div>
+    </label>
   </div>
+
   <div class="footer-cta">
     <a class="btn" href="/results.html">Back</a>
     <a class="btn btn-primary" id="to-offers" aria-disabled="true">Save & Continue</a>

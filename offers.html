@@ -9,15 +9,16 @@
   <a class="navlink" href="/traits.html">Discover (NOVA)</a>
   <a class="navlink" href="/snapshot.html">My Snapshot</a>
   <a class="navlink" href="/reflection.html">Reflect</a>
-  <a class="navlink active" href="/offers.html">Plans</a>
+  <a class="navlink" href="/offers.html">Plans</a>
 </nav>
 <div class="container">
+
 <section class="card">
-  <h2 style="margin-top:0">Choose Your Path</h2>
-  <p class="small">Unlock NAVI to turn your Nova results into résumés, cover letters, targeted roles, and a step-by-step plan.</p>
+  <h2 class="page-title">Choose Your Plan</h2>
+  <p class="small small-lead">Unlock NAVI to turn your Nova results into résumés, cover letters, targeted roles, and a step-by-step plan.</p>
   <div id="offers" class="grid cols-2"></div>
   <hr class="sep"/>
-  <p class="small" style="text-align:center; margin-top:12px;">
+  <p class="small fine" style="text-align:center; margin-top:12px;">
     * All subscription plans are billed monthly. You can cancel at any time.
   </p>
   <div class="footer-cta">
@@ -25,21 +26,18 @@
     <a class="btn btn-primary" href="/thankyou.html">I'm Done</a>
   </div>
 </section>
-</div>
 <script src="https://payhip.com/payhip.js"></script>
 <script>
 fetch('/data/offers.json').then(r=>r.json()).then(items=>{
   const wrap=document.getElementById('offers');
   items.filter(o=>o.product_id&&o.url).forEach(o=>{
     const card=document.createElement('div');
-    card.className='card offer';
-    card.innerHTML = `
-      <h3>${o.title}</h3>
-      <p class="small">${o.label}</p>
-      <a href="${o.url}" class="payhip-buy-button btn btn-primary" data-product="${o.product_id}">Buy Now</a>
-    `;
+    card.className='offer box';
+    card.innerHTML = '<h3>'+o.title+'</h3>' +
+                     '<p class="small">'+o.label+'</p>' +
+                     '<a href="'+o.url+'" class="payhip-buy-button btn btn-primary" data-product="'+o.product_id+'">Buy Now</a>';
     wrap.appendChild(card);
   });
 });
 </script>
-</body></html>
+</div></body></html>

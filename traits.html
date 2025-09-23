@@ -14,7 +14,7 @@
 <div class="container">
 
 <section class="card">
-  <h2 style="margin-top:0">Select your traits</h2>
+  <h2 class="page-title">Select your traits</h2>
   <div id="traits" class="traits"></div>
   <div class="footer-cta">
     <a class="btn" href="/index.html">Back</a>
@@ -22,13 +22,12 @@
   </div>
 </section>
 <script>
-// Load traits, ensure none are pre-selected
 fetch('/data/traits.json').then(r=>r.json()).then(list=>{
   const wrap = document.getElementById('traits');
   const selected = new Set();
   list.forEach(name=>{
     const el = document.createElement('div');
-    el.className='trait';
+    el.className='trait box';
     el.textContent=name;
     el.addEventListener('click',()=>{
       if(el.classList.toggle('is-selected')) selected.add(name);
