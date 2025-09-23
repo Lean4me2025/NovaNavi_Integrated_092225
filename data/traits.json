@@ -1,54 +1,202 @@
-{
-  "traits": [
-    "Analytical",
-    "Adaptable",
-    "Visionary",
-    "Teacher",
-    "Mentor",
-    "Compassionate",
-    "Creative",
-    "Detail-Oriented",
-    "Strategic",
-    "Resilient",
-    "Collaborative",
-    "Innovative",
-    "Disciplined",
-    "Servant-Leader",
-    "Organizer",
-    "Communicator",
-    "Problem Solver",
-    "Researcher",
-    "Builder",
-    "Entrepreneurial",
-    "Reliable",
-    "Curious",
-    "Empathetic",
-    "Courageous",
-    "Ethical",
-    "Patient",
-    "Facilitator",
-    "Planner",
-    "Connector",
-    "Coach",
-    "Listener",
-    "Results-Driven",
-    "Calm Under Pressure",
-    "Data-Driven",
-    "Systems Thinker",
-    "Hands-On",
-    "Growth Mindset",
-    "Resourceful",
-    "Quality-Focused",
-    "Customer-Obsessed",
-    "Design Thinker",
-    "Storyteller",
-    "Operator",
-    "Strategist",
-    "Learner",
-    "Self-Starter",
-    "Owner\u2019s Mindset",
-    "Process-Focused",
-    "Innovative Executor",
-    "Persuasive"
-  ]
-}
+[
+  {
+    "name": "Analytical",
+    "desc": "Breaks problems into parts and reasons with data and logic."
+  },
+  {
+    "name": "Adaptable",
+    "desc": "Adjusts quickly to change and new information."
+  },
+  {
+    "name": "Visionary",
+    "desc": "Sees future possibilities and paints a compelling picture."
+  },
+  {
+    "name": "Teacher",
+    "desc": "Explains concepts clearly and helps others learn."
+  },
+  {
+    "name": "Mentor",
+    "desc": "Guides, supports, and develops others over time."
+  },
+  {
+    "name": "Compassionate",
+    "desc": "Responds with empathy and care for people."
+  },
+  {
+    "name": "Creative",
+    "desc": "Generates novel ideas and connects unexpected dots."
+  },
+  {
+    "name": "Detail-Oriented",
+    "desc": "Catches small discrepancies; cares about precision."
+  },
+  {
+    "name": "Strategic",
+    "desc": "Thinks several steps ahead to reach long-term goals."
+  },
+  {
+    "name": "Resilient",
+    "desc": "Bounces back from setbacks and keeps moving."
+  },
+  {
+    "name": "Collaborative",
+    "desc": "Works well with others; values diverse input."
+  },
+  {
+    "name": "Innovative",
+    "desc": "Improves systems; tries new approaches that work."
+  },
+  {
+    "name": "Disciplined",
+    "desc": "Follows through consistently; keeps commitments."
+  },
+  {
+    "name": "Servant-Leader",
+    "desc": "Leads by serving the team and removing obstacles."
+  },
+  {
+    "name": "Organizer",
+    "desc": "Brings order, plans resources, and sequences tasks."
+  },
+  {
+    "name": "Communicator",
+    "desc": "Conveys ideas clearly in writing and speech."
+  },
+  {
+    "name": "Problem Solver",
+    "desc": "Finds practical solutions under constraints."
+  },
+  {
+    "name": "Researcher",
+    "desc": "Digs for facts and patterns to inform decisions."
+  },
+  {
+    "name": "Builder",
+    "desc": "Creates usable things\u2014products, programs, or processes."
+  },
+  {
+    "name": "Entrepreneurial",
+    "desc": "Spots opportunities and takes initiative."
+  },
+  {
+    "name": "Reliable",
+    "desc": "Delivers on time and can be counted on."
+  },
+  {
+    "name": "Curious",
+    "desc": "Asks questions, explores, and learns quickly."
+  },
+  {
+    "name": "Empathetic",
+    "desc": "Understands others\u2019 feelings and perspectives."
+  },
+  {
+    "name": "Courageous",
+    "desc": "Takes wise risks; speaks up for what\u2019s right."
+  },
+  {
+    "name": "Ethical",
+    "desc": "Acts with integrity; chooses the right path."
+  },
+  {
+    "name": "Patient",
+    "desc": "Gives things time; steady under pressure."
+  },
+  {
+    "name": "Facilitator",
+    "desc": "Guides groups to decisions and alignment."
+  },
+  {
+    "name": "Planner",
+    "desc": "Maps steps, timelines, and resources clearly."
+  },
+  {
+    "name": "Connector",
+    "desc": "Introduces people and creates partnerships."
+  },
+  {
+    "name": "Coach",
+    "desc": "Helps others improve with feedback and encouragement."
+  },
+  {
+    "name": "Listener",
+    "desc": "Hears beyond words; reflects back understanding."
+  },
+  {
+    "name": "Results-Driven",
+    "desc": "Focuses on outcomes and measurable impact."
+  },
+  {
+    "name": "Calm Under Pressure",
+    "desc": "Stays steady and clear in high-stakes moments."
+  },
+  {
+    "name": "Data-Driven",
+    "desc": "Uses evidence to guide choices and priorities."
+  },
+  {
+    "name": "Systems Thinker",
+    "desc": "Understands how parts fit within a whole."
+  },
+  {
+    "name": "Hands-On",
+    "desc": "Learns by doing; rolls up sleeves to help."
+  },
+  {
+    "name": "Growth Mindset",
+    "desc": "Believes abilities grow with practice and feedback."
+  },
+  {
+    "name": "Resourceful",
+    "desc": "Finds a way forward with what\u2019s available."
+  },
+  {
+    "name": "Quality-Focused",
+    "desc": "Raises the bar; cares about craftsmanship."
+  },
+  {
+    "name": "Customer-Obsessed",
+    "desc": "Puts user needs at the center of decisions."
+  },
+  {
+    "name": "Design Thinker",
+    "desc": "Empathizes, prototypes, and iterates to fit users."
+  },
+  {
+    "name": "Storyteller",
+    "desc": "Frames facts as narratives that move people."
+  },
+  {
+    "name": "Operator",
+    "desc": "Runs day-to-day smoothly and reliably."
+  },
+  {
+    "name": "Strategist",
+    "desc": "Chooses where to play and how to win."
+  },
+  {
+    "name": "Learner",
+    "desc": "Pursues knowledge and builds skills continuously."
+  },
+  {
+    "name": "Self-Starter",
+    "desc": "Motivated to begin and keep momentum without prompts."
+  },
+  {
+    "name": "Owner\u2019s Mindset",
+    "desc": "Thinks like an owner; accountable for outcomes."
+  },
+  {
+    "name": "Process-Focused",
+    "desc": "Creates repeatable steps that reduce errors."
+  },
+  {
+    "name": "Innovative Executor",
+    "desc": "Turns new ideas into shipped results."
+  },
+  {
+    "name": "Persuasive",
+    "desc": "Influences decisions through logic and credibility."
+  }
+]
