@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>My Snapshot</title>
+<link rel="stylesheet" href="/assets/styles.css"/>
+<script>window.NOVA={};</script>
+</head><body>
+<nav class="nav">
+  <a class="navlink" href="/index.html">Home</a>
+  <a class="navlink" href="/traits.html">Discover (NOVA)</a>
+  <a class="navlink" href="/snapshot.html">My Snapshot</a>
+  <a class="navlink" href="/reflection.html">Reflect</a>
+  <a class="navlink" href="/offers.html">Plans</a>
+</nav>
+<div class="container">
+
+<section class="card">
+  <h2 style="margin-top:0">My Snapshot</h2>
+  <p class="small">This page consolidates your selected traits and top suggested roles.</p>
+  <div id="snap"></div>
+  <div class="footer-cta">
+    <a class="btn" href="/results.html">Refresh from Results</a>
+  </div>
+</section>
+<script>
+const traits = JSON.parse(localStorage.getItem('nova_traits')||'[]');
+document.getElementById('snap').innerHTML = traits.length ? `<p>Traits: ${traits.join(', ')}</p>` : '<p>No traits saved yet.</p>';
+</script>
+</div></body></html>

@@ -1,66 +1,45 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Offers · Choose Your Path</title>
-  
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <link rel="stylesheet" href="assets/style.css?v=4">
-  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
-</head>
-<body>
-
-<header class="container header">
-  <div class="brand">🌟 NOVA + NAVI</div>
-  <nav class="nav"><a href="index.html" class="">Home</a><a href="traits.html" class="">Discover</a><a href="results.html" class="">My Snapshot</a><a href="reflection.html" class="">Reflect</a><a href="offers.html" class="active">Plans</a><a href="navi.html" class="">Build</a></nav>
-</header>
-
-<main class="container">
-  <h1 class="offers-title">✨ Make a Selection and Determine Your Path ✨</h1>
-  <p class="small" style="text-align:center">Your choice will open the right tools in NAVI immediately after this step.</p>
-  <section class="offer-grid">
-    <article class="offer-card">
-      <h3>NAVI Starter Plan</h3>
-      <p class="small">Core tools to get moving with clarity and momentum.</p>
-      <div style="margin-top:10px">
-        <a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Now</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <h3>NAVI Pro Plan</h3>
-      <p class="small">Resume rewrite AI, unlimited cover letters, company intel, and more.</p>
-      <div style="margin-top:10px">
-        <a href="https://payhip.com/b/knC1Z" class="payhip-buy-button" data-theme="green" data-product="knC1Z">Buy Now</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <h3>NAVI Pro Suite</h3>
-      <p class="small">Everything in Pro plus advanced coaching & premium support.</p>
-      <div style="margin-top:10px">
-        <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <h3>How to Know Your Purpose (Book)</h3>
-      <p class="small">Go deeper with a practical, faith-friendly guide you can revisit.</p>
-      <div style="margin-top:10px">
-        <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
-      </div>
-    </article>
-  </section>
-
-  <div class="controls" style="justify-content:center;margin-top:22px">
-    <a class="btn secondary" href="reflection.html">Back</a>
-    <a class="btn" href="navi.html">Skip & Start NAVI</a>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Plans | Navi Offers</title>
+<link rel="stylesheet" href="/assets/styles.css"/>
+<script>window.NOVA={};</script>
+</head><body>
+<nav class="nav">
+  <a class="navlink" href="/index.html">Home</a>
+  <a class="navlink" href="/traits.html">Discover (NOVA)</a>
+  <a class="navlink" href="/snapshot.html">My Snapshot</a>
+  <a class="navlink" href="/reflection.html">Reflect</a>
+  <a class="navlink active" href="/offers.html">Plans</a>
+</nav>
+<div class="container">
+<section class="card">
+  <h2 style="margin-top:0">Choose Your Path</h2>
+  <p class="small">Unlock NAVI to turn your Nova results into résumés, cover letters, targeted roles, and a step-by-step plan.</p>
+  <div id="offers" class="grid cols-2"></div>
+  <hr class="sep"/>
+  <p class="small" style="text-align:center; margin-top:12px;">
+    * All subscription plans are billed monthly. You can cancel at any time.
+  </p>
+  <div class="footer-cta">
+    <a class="btn" href="/reflection.html">Back</a>
+    <a class="btn btn-primary" href="/thankyou.html">I'm Done</a>
   </div>
-</main>
-<footer class="footer container">© 2025 NOVA + NAVI</footer>
+</section>
+</div>
+<script src="https://payhip.com/payhip.js"></script>
 <script>
-console.log('Reflection choice:', localStorage.getItem('nova_reflection_where')||'');
+fetch('/data/offers.json').then(r=>r.json()).then(items=>{
+  const wrap=document.getElementById('offers');
+  items.filter(o=>o.product_id&&o.url).forEach(o=>{
+    const card=document.createElement('div');
+    card.className='card offer';
+    card.innerHTML = `
+      <h3>${o.title}</h3>
+      <p class="small">${o.label}</p>
+      <a href="${o.url}" class="payhip-buy-button btn btn-primary" data-product="${o.product_id}">Buy Now</a>
+    `;
+    wrap.appendChild(card);
+  });
+});
 </script>
-</body>
-</html>
+</body></html>

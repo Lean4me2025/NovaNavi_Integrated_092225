@@ -1,61 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reflection · NOVA</title>
-  
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Reflection | Nova</title>
+<link rel="stylesheet" href="/assets/styles.css"/>
+<script>window.NOVA={};</script>
+</head><body>
+<nav class="nav">
+  <a class="navlink" href="/index.html">Home</a>
+  <a class="navlink" href="/traits.html">Discover (NOVA)</a>
+  <a class="navlink" href="/snapshot.html">My Snapshot</a>
+  <a class="navlink" href="/reflection.html">Reflect</a>
+  <a class="navlink" href="/offers.html">Plans</a>
+</nav>
+<div class="container">
 
-  <link rel="stylesheet" href="assets/style.css?v=4">
-</head>
-<body>
-
-<header class="container header">
-  <div class="brand">🌟 NOVA + NAVI</div>
-  <nav class="nav"><a href="index.html" class="">Home</a><a href="traits.html" class="">Discover</a><a href="results.html" class="">My Snapshot</a><a href="reflection.html" class="active">Reflect</a><a href="offers.html" class="">Plans</a><a href="navi.html" class="">Build</a></nav>
-</header>
-
-<main class="container">
-  <section class="card">
-    <h1>Reflection</h1>
-    <p class="small">Where are you starting from today? Choose the statement that best matches your situation.</p>
-    <div class="reflection-options">
-      <label class="option">
-        <input type="radio" name="where" value="Exploring purpose for the first time">
-        <div><strong>Exploring purpose for the first time</strong><br><span class="small">You want clarity and a simple starting point.</span></div>
-      </label>
-      <label class="option">
-        <input type="radio" name="where" value="I know my purpose, need a plan">
-        <div><strong>I know my purpose, need a plan</strong><br><span class="small">You’re ready to convert clarity into action.</span></div>
-      </label>
-      <label class="option">
-        <input type="radio" name="where" value="Career pivot or restart">
-        <div><strong>Career pivot or restart</strong><br><span class="small">You’re re-aligning and want a guided path.</span></div>
-      </label>
-      <label class="option">
-        <input type="radio" name="where" value="Sharpening and leveling up">
-        <div><strong>Sharpening and leveling up</strong><br><span class="small">You’re optimizing, not starting over.</span></div>
-      </label>
-    </div>
-    <div class="controls">
-      <button id="saveRef" class="btn" disabled>Save & Continue</button>
-      <a class="btn secondary" href="results.html">Back</a>
-    </div>
-  </section>
-</main>
-<footer class="footer container">© 2025 NOVA + NAVI</footer>
+<section class="card">
+  <h2 style="margin-top:0">Where are you today?</h2>
+  <p class="small">Choose the statement that best describes your current situation.</p>
+  <div class="grid cols-2" id="refl-opts">
+    <label class="card"><input type="radio" name="refl" value="just-starting"> I'm just starting to explore.</label>
+    <label class="card"><input type="radio" name="refl" value="changing"> I'm changing careers or re-entering.</label>
+    <label class="card"><input type="radio" name="refl" value="growing"> I'm in my lane and want to grow.</label>
+    <label class="card"><input type="radio" name="refl" value="leading"> I'm leading and want to scale impact.</label>
+  </div>
+  <div class="footer-cta">
+    <a class="btn" href="/results.html">Back</a>
+    <a class="btn btn-primary" id="to-offers" aria-disabled="true">Save & Continue</a>
+  </div>
+</section>
 <script>
-const radios = document.querySelectorAll('input[name="where"]');
-const saveBtn = document.getElementById('saveRef');
-radios.forEach(r => r.addEventListener('change', () => { saveBtn.disabled = false; }));
-saveBtn.addEventListener('click', () => {
-  const sel = Array.from(radios).find(r => r.checked)?.value || '';
-  localStorage.setItem('nova_reflection_where', sel);
-  window.location.href = 'offers.html';
+let chosen=null;
+document.querySelectorAll('input[name="refl"]').forEach(i=>i.addEventListener('change',e=>{
+  chosen=e.target.value;
+  document.getElementById('to-offers').removeAttribute('aria-disabled');
+}));
+document.getElementById('to-offers').addEventListener('click',()=>{
+  if(!chosen) return;
+  localStorage.setItem('navi_stage', chosen);
+  location.href='/offers.html';
 });
 </script>
-</body>
-</html>
+</div></body></html>
