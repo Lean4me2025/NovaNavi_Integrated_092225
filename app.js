@@ -1,172 +1,48 @@
-import { Nova } from './modules/nova.js';
-import { Navi } from './modules/navi.js';
-import { Reflection } from './modules/reflection.js';
+(function(){
+  const app = document.getElementById('app');
+  const setYear = ()=>{ var y=document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); } };
+  setYear();
 
-const el = (sel) => document.querySelector(sel);
-
-const state = {
-  selectedTraits: new Set(),
-  novaSummary: null,
-  resumeDraft: '',
-  coverLetterDraft: '',
-  reflection: null,
-  selectedRole: null,
-};
-
-
-function homeView(){
-  return `
-    <section class="section">
-      <h1>Welcome to NOVA + NAVI</h1>
-      <p class="stat"><strong>🌍 Did you know?</strong> <em>89% of people say they don’t truly know their purpose.</em></p>
-      <p>That’s why NOVA exists — she was designed to help you <strong>discover and understand your purpose</strong> by uncovering the traits that make you who you are.</p>
-
-      <div class="phase">
-        <h2>Phase 1 — Who You Are (NOVA)</h2>
-        <p>NOVA is on your side. She gently guides you through selecting the traits that describe you best. From there, she connects those traits to deeper attributes, and reveals career paths where your strengths naturally fit.</p>
-      </div>
-
-      <div class="phase">
-        <h2>Phase 2 — Where You’re Going (NAVI)</h2>
-        <p>Once you’ve discovered who you are, NAVI takes your profile and turns it into action:</p>
-        <ul>
-          <li>Resumes & cover letters that highlight your strengths</li>
-          <li>Career roles aligned with your attributes</li>
-          <li>Training & steps to help you grow into your purpose</li>
-        </ul>
-      </div>
-
-      <div class="roadmap">
-        <h3>How it works</h3>
-        <div class="steps-row">
-          <div class="step-box">
-            <h4>Discover with NOVA</h4>
-            <p>Choose traits that describe you.</p>
-          </div>
-          <div class="step-box">
-            <h4>See your results</h4>
-            <p>Get matched to attributes & roles.</p>
-          </div>
-          <div class="step-box">
-            <h4>Reflect</h4>
-            <p>Pause and consider your journey.</p>
-          </div>
-          <div class="step-box">
-            <h4>Choose a role</h4>
-            <p>Pick a focus role that fits.</p>
-          </div>
-          <div class="step-box last-step">
-            <h4>Build with NAVI</h4>
-            <p>Turn discovery into resumes, letters, steps.</p>
-          </div>
-        </div>
-        <div class="steps-cta">
-          <a class="btn primary" href="#/nova">Start with NOVA</a>
-        </div>
-      </div>
-
-      <p class="closing">✨ This isn’t just job matching — it’s uncovering who you were designed to be, and then charting where you can go.</p>
-    </section>
-  `;
-}
-
-
-function render(route){
-  const app = el('#app');
-  switch(route){
-    case 'home':
-      app.innerHTML = homeView();
-      bindStartNova();
-      break;
-    case 'nova':
-      app.innerHTML = Nova.view();
-      Nova.mount(state);
-      break;
-    case 'result':
-      Nova.resultView(state).then(html => {
-        app.innerHTML = html;
-        Nova.mount(state);
-      });
-      break;
-    case 'reflect':
-      app.innerHTML = Reflection.view(state);
-      Reflection.mount(state);
-      break;
-    case 'navi':
-      app.innerHTML = Navi.view();
-      Navi.mount(state);
-      break;
-    case 'plans':
-      app.innerHTML = `
-        <section class="section">
-          <h2>Level Up (Optional)</h2>
-          <p class="subtitle">Choose a plan to unlock NAVI's tools and training.</p>
-          <div class="cards4">
-            <div class="card">
-              <h3>Purpose Book</h3>
-              <p>Downloadable guide to purpose & activation.</p>
-              <a href="https://payhip.com/b/REPLACE_BOOK_ID" class="payhip-buy-button" data-product="REPLACE_BOOK_ID">Buy Now</a>
-            </div>
-            <div class="card">
-              <h3>Starter</h3>
-              <p>NOVA 50-trait report + basic resume & 1 cover letter.</p>
-              <a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-product="GdfU7">Buy Now</a>
-            </div>
-            <div class="card">
-              <h3>Pro Suite</h3>
-              <p>Resume rewrite AI, unlimited cover letters, company intel.</p>
-              <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-product="re4Hy">Buy Now</a>
-            </div>
-            <div class="card">
-              <h3>Mastery</h3>
-              <p>Everything in Pro + 1:1 coaching & career roadmap.</p>
-              <a href="https://payhip.com/b/REPLACE_MASTERY_ID" class="payhip-buy-button" data-product="REPLACE_MASTERY_ID">Buy Now</a>
-            </div>
-          </div>
-        </section>
-      `;
-      break;
-    default:
-      location.hash = '#/home';
+  function bindStartNova(){
+    ['startNovaTop','startNovaBackup'].forEach(id => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      const go = ()=>{ location.hash = '#/nova'; };
+      el.addEventListener('click', e=>{ e.preventDefault(); go(); });
+      el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); }});
+    });
   }
-}
 
-function routeFromHash(){
-  const raw = location.hash || '#/home';
-  const h = raw.replace(/^#+/, '').replace(/^\/+/, '').trim();
-  return h || 'home';
-}
+  function viewHome(){
+    return document.querySelector('main').innerHTML; // prerendered content
+  }
 
-window.addEventListener('hashchange', () => render(routeFromHash()));
+  function viewNova(){
+    return `
+      <section class="section">
+        <h1>Discover with NOVA</h1>
+        <p>Select the traits that describe you. (Demo view)</p>
+        <div class="traits">
+          ${['Creative','Innovative','Problem Solver','Planner','Patient','Design Thinker','Resilient']
+             .map(t => `<label class="chip"><input type="checkbox"> ${t}</label>`).join('')}
+        </div>
+        <div class="actions">
+          <a href="#/home" class="btn">Back</a>
+        </div>
+      </section>`;
+  }
 
-
-// Fallback: handle in-page hash links reliably (allow default, then enforce route)
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a[href^="#/"]');
-  if (!a) return;
-  const href = a.getAttribute('href') || '#/home';
-  // Do NOT prevent default; let the browser update the hash,
-  // then ensure it's exactly one # and parsed correctly.
-  setTimeout(() => {
-    if (location.hash !== href) {
-      // Normalize to a single # and '/route' format
-      const clean = href.replace(/^#/, '');
-      location.hash = clean;
+  function render(){
+    const hash = (location.hash || '#/home').replace(/^#+/,'#');
+    if(hash.startsWith('#/nova')){
+      app.innerHTML = viewNova();
+    } else {
+      app.innerHTML = viewHome();
+      bindStartNova();
     }
-  }, 0);
-});
+  }
 
-function bindStartNova(){
-  const cta = document.getElementById('startNovaCta');
-  if (!cta) return;
-  const go = () => { location.hash = '#/nova'; };
-  cta.addEventListener('click', (e)=>{ e.preventDefault(); go(); });
-  cta.addEventListener('keydown', (e)=>{
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
-  });
-}
-document.addEventListener('DOMContentLoaded', () => { bindStartNova(); 
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-  render(routeFromHash());
-});
+  window.addEventListener('hashchange', render);
+  document.addEventListener('DOMContentLoaded', render);
+  render();
+})();
