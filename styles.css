@@ -65,3 +65,15 @@ h1,h2,h3{margin:.3rem 0 .5rem}
 .plan .rec{position:absolute;right:.6rem;top:.6rem;background:#5d7bff;padding:.2rem .4rem;border-radius:.4rem;font-size:.75rem}
 .plan h4{margin:.1rem 0 .4rem}
 .plan ul{margin:.4rem 0 .2rem 1rem}
+
+/* Info block on Snapshot */
+.info-block{background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.25); border-radius:.7rem; padding:.7rem .9rem; margin:.6rem 0 0.2rem}
+.info-block h3{margin:.1rem 0 .4rem}
+.info-block p{margin:0; color:rgba(255,255,255,.92)}
+
+/* Make Aligned Roles visually distinct from traits */
+.role-cards .role-card{background:#0f2b22; border-color:#3bd18b}  /* deep teal */
+.role-cards .role-card h6{color:#b4ffd9}
+.role-cards .role-card p{color:#d2ffe9}
+/* Add a subtle label underline for the section heading */
+.section h3.section-label{border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:.25rem; margin-top:.8rem}
