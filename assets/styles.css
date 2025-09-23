@@ -31,7 +31,7 @@ a.navlink.active, a.navlink:hover{color:var(--text);background:rgba(255,255,255,
 @media(max-width:680px){.traits{grid-template-columns:repeat(2,1fr)}}
 .trait{padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.85);background:rgba(255,255,255,.02);cursor:pointer;user-select:none;transition:.15s ease}
 .trait:hover{border-color:var(--ring)}
-.trait.is-selected{outline:2px solid var(--ring);background:rgba(59,130,246,.08)}
+.trait.is-selected{outline:2px solid var(--accent);background:rgba(255,209,102,0.15);font-weight:600;color:var(--accent)}
 
 .offer{border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:18px;background:rgba(255,255,255,.02);transition:border .18s ease, box-shadow .18s ease}
 .offer:hover{border-color:var(--accent2);box-shadow:0 4px 20px rgba(0,0,0,.25)}
