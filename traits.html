@@ -5,18 +5,17 @@
 <script>window.NOVA={};</script>
 </head><body>
 <nav class="nav">
-  <a class="navlink" href="/index.html">Home</a>
-  <a class="navlink" href="/traits.html">Discover (NOVA)</a>
-  <a class="navlink" href="/snapshot.html">My Snapshot</a>
-  <a class="navlink" href="/reflection.html">Reflect</a>
-  <a class="navlink" href="/offers.html">Plans</a>
+  <a class="navlink " href="/index.html">Home</a>
+  <a class="navlink active" href="/traits.html">Discover (NOVA)</a>
+  <a class="navlink " href="/snapshot.html">My Snapshot</a>
+  <a class="navlink " href="/reflection.html">Reflect</a>
+  <a class="navlink " href="/offers.html">Plans</a>
 </nav>
 <div class="container">
-
 <section class="card">
-  <h2 class="page-title">Select your traits</h2>
+  <h2 style="margin-top:0">Select your traits</h2>
   <div id="traits" class="traits"></div>
-  <div class="footer-cta">
+  <div class="footer-cta" style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
     <a class="btn" href="/index.html">Back</a>
     <a class="btn btn-primary" id="go-results">See My Results</a>
   </div>
@@ -24,11 +23,12 @@
 <script>
 fetch('/data/traits.json').then(r=>r.json()).then(list=>{
   const wrap = document.getElementById('traits');
-  const selected = new Set();
+  const selected = new Set(JSON.parse(localStorage.getItem('nova_traits')||'[]'));
   list.forEach(name=>{
     const el = document.createElement('div');
-    el.className='trait box';
+    el.className='trait';
     el.textContent=name;
+    if(selected.has(name)) el.classList.add('is-selected');
     el.addEventListener('click',()=>{
       if(el.classList.toggle('is-selected')) selected.add(name);
       else selected.delete(name);

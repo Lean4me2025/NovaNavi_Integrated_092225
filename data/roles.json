@@ -1,236 +1,168 @@
-[
-  {
-    "role": "Software Engineer",
-    "traits": [
-      "Problem Solver",
-      "Analytical",
-      "Builder",
-      "Systems Thinker",
-      "Disciplined",
-      "Strategic",
-      "Data-Driven",
-      "Innovative Executor"
-    ]
-  },
-  {
-    "role": "Product Designer",
-    "traits": [
-      "Design Thinker",
-      "Creative",
-      "Empathetic",
-      "Problem Solver",
-      "Storyteller",
-      "Customer-Obsessed",
-      "Innovative",
-      "Curious"
-    ]
-  },
-  {
-    "role": "Data Analyst",
-    "traits": [
-      "Analytical",
-      "Data-Driven",
-      "Detail-Oriented",
-      "Researcher",
-      "Problem Solver",
-      "Systems Thinker"
-    ]
-  },
-  {
-    "role": "Project Manager",
-    "traits": [
-      "Planner",
-      "Organizer",
-      "Strategic",
-      "Disciplined",
-      "Communicator",
-      "Calm Under Pressure",
-      "Results-Driven"
-    ]
-  },
-  {
-    "role": "Operations Manager",
-    "traits": [
-      "Operator",
-      "Process-Focused",
-      "Quality-Focused",
-      "Owner\u2019s Mindset",
-      "Reliable",
-      "Resourceful",
-      "Organizer"
-    ]
-  },
-  {
-    "role": "Teacher / Instructor",
-    "traits": [
-      "Teacher",
-      "Communicator",
-      "Mentor",
-      "Listener",
-      "Compassionate",
-      "Patient"
-    ]
-  },
-  {
-    "role": "Coach / Counselor",
-    "traits": [
-      "Coach",
-      "Mentor",
-      "Listener",
-      "Empathetic",
-      "Facilitator",
-      "Compassionate"
-    ]
-  },
-  {
-    "role": "Sales / Business Development",
-    "traits": [
-      "Persuasive",
-      "Connector",
-      "Communicator",
-      "Entrepreneurial",
-      "Resilient",
-      "Results-Driven"
-    ]
-  },
-  {
-    "role": "Marketing Strategist",
-    "traits": [
-      "Strategist",
-      "Storyteller",
-      "Creative",
-      "Data-Driven",
-      "Customer-Obsessed",
-      "Visionary"
-    ]
-  },
-  {
-    "role": "UX Designer / Researcher",
-    "traits": [
-      "Design Thinker",
-      "Researcher",
-      "Empathetic",
-      "Curious",
-      "Collaborative",
-      "Problem Solver"
-    ]
-  },
-  {
-    "role": "Entrepreneur / Founder",
-    "traits": [
-      "Entrepreneurial",
-      "Visionary",
-      "Owner\u2019s Mindset",
-      "Resilient",
-      "Resourceful",
-      "Innovative",
-      "Self-Starter"
-    ]
-  },
-  {
-    "role": "Customer Success Manager",
-    "traits": [
-      "Customer-Obsessed",
-      "Communicator",
-      "Problem Solver",
-      "Empathetic",
-      "Organizer",
-      "Reliable"
-    ]
-  },
-  {
-    "role": "Research Scientist",
-    "traits": [
-      "Researcher",
-      "Analytical",
-      "Curious",
-      "Problem Solver",
-      "Disciplined",
-      "Data-Driven"
-    ]
-  },
-  {
-    "role": "Systems Analyst",
-    "traits": [
-      "Systems Thinker",
-      "Analytical",
-      "Problem Solver",
-      "Communicator",
-      "Detail-Oriented"
-    ]
-  },
-  {
-    "role": "HR / People Operations",
-    "traits": [
-      "Listener",
-      "Communicator",
-      "Empathetic",
-      "Organizer",
-      "Ethical",
-      "Facilitator"
-    ]
-  },
-  {
-    "role": "Product Manager",
-    "traits": [
-      "Strategic",
-      "Communicator",
-      "Problem Solver",
-      "Customer-Obsessed",
-      "Planner",
-      "Results-Driven",
-      "Data-Driven"
-    ]
-  },
-  {
-    "role": "Business Analyst",
-    "traits": [
-      "Analytical",
-      "Communicator",
-      "Problem Solver",
-      "Detail-Oriented",
-      "Data-Driven"
-    ]
-  },
-  {
-    "role": "Quality Assurance Specialist",
-    "traits": [
-      "Detail-Oriented",
-      "Quality-Focused",
-      "Disciplined",
-      "Process-Focused"
-    ]
-  },
-  {
-    "role": "Nonprofit Program Manager",
-    "traits": [
-      "Servant-Leader",
-      "Organizer",
-      "Planner",
-      "Communicator",
-      "Compassionate",
-      "Results-Driven"
-    ]
-  },
-  {
-    "role": "Healthcare Administrator",
-    "traits": [
-      "Organizer",
-      "Planner",
-      "Calm Under Pressure",
-      "Ethical",
-      "Communicator",
-      "Process-Focused"
-    ]
-  },
-  {
-    "role": "Financial Analyst",
-    "traits": [
-      "Analytical",
-      "Data-Driven",
-      "Detail-Oriented",
-      "Disciplined",
-      "Problem Solver"
-    ]
-  }
-]
+{
+  "Creative": [
+    "Graphic Designer",
+    "UX Designer",
+    "Content Strategist",
+    "Creative Producer"
+  ],
+  "Innovative": [
+    "Product Manager",
+    "R&D Associate",
+    "Innovation Lead"
+  ],
+  "Problem Solver": [
+    "Business Analyst",
+    "Operations Analyst",
+    "Solutions Architect"
+  ],
+  "Planner": [
+    "Project Coordinator",
+    "Operations Planner",
+    "Supply Chain Analyst"
+  ],
+  "Data-Driven": [
+    "Data Analyst",
+    "BI Analyst",
+    "Marketing Analyst"
+  ],
+  "Systems Thinker": [
+    "Process Engineer",
+    "Systems Analyst",
+    "Quality Engineer"
+  ],
+  "Communicator": [
+    "Account Manager",
+    "Customer Success Specialist",
+    "Trainer"
+  ],
+  "Empathetic": [
+    "People Operations",
+    "Counselor Assistant",
+    "Customer Care Lead"
+  ],
+  "Entrepreneurial": [
+    "Business Development",
+    "Founder/Operator",
+    "Growth Manager"
+  ],
+  "Disciplined": [
+    "Project Manager",
+    "Compliance Specialist",
+    "Operations Supervisor"
+  ],
+  "Ethical": [
+    "Compliance Analyst",
+    "Risk & Governance Associate",
+    "Nonprofit Coordinator"
+  ],
+  "Courageous": [
+    "Sales Development Rep",
+    "Field Operations Lead",
+    "Crisis Response Coordinator"
+  ],
+  "Resilient": [
+    "Support Engineer",
+    "Case Manager",
+    "Operations Associate"
+  ],
+  "Researcher": [
+    "Research Assistant",
+    "Insights Analyst",
+    "Policy Analyst"
+  ],
+  "Builder": [
+    "Implementation Specialist",
+    "Operations Engineer",
+    "Technical Program Coordinator"
+  ],
+  "Facilitator": [
+    "Workshop Leader",
+    "Program Coordinator",
+    "Scrum Master"
+  ],
+  "Coach": [
+    "Career Coach Assistant",
+    "Team Lead",
+    "Instructor"
+  ],
+  "Connector": [
+    "Community Manager",
+    "Partnerships Associate",
+    "Recruiter"
+  ],
+  "Organizer": [
+    "Administrative Coordinator",
+    "Event Coordinator",
+    "Office Manager"
+  ],
+  "Detail-Oriented": [
+    "Quality Assurance",
+    "Bookkeeper",
+    "Data Specialist"
+  ],
+  "Customer-Obsessed": [
+    "Customer Success Manager",
+    "User Research Assistant",
+    "Support Lead"
+  ],
+  "Technologist": [
+    "IT Support Specialist",
+    "Junior Developer",
+    "Systems Admin Assistant"
+  ],
+  "Process-Focused": [
+    "Process Analyst",
+    "Lean Coordinator",
+    "Operations Excellence Associate"
+  ],
+  "Results-Driven": [
+    "Account Executive",
+    "Growth Marketer",
+    "Delivery Manager"
+  ],
+  "Curious": [
+    "Research Intern",
+    "Content Researcher",
+    "Market Analyst"
+  ],
+  "Design Thinker": [
+    "UX Researcher",
+    "Service Designer",
+    "Product Designer"
+  ],
+  "Strategic": [
+    "Strategy Analyst",
+    "Product Strategist",
+    "Operations Strategist"
+  ],
+  "Servant-Leader": [
+    "Team Lead",
+    "Shift Supervisor",
+    "Community Lead"
+  ],
+  "Networker": [
+    "Talent Sourcer",
+    "Community Partnerships",
+    "Sales Associate"
+  ],
+  "Hands-On": [
+    "Field Technician",
+    "Operations Technician",
+    "Lab Assistant"
+  ],
+  "Storyteller": [
+    "Copywriter",
+    "Social Media Manager",
+    "Content Producer"
+  ],
+  "Patient": [
+    "Support Specialist",
+    "Teacher\u2019s Aide",
+    "Healthcare Assistant"
+  ],
+  "Learner": [
+    "Training Assistant",
+    "Apprentice",
+    "Junior Analyst"
+  ]
+}
