@@ -1,48 +1,38 @@
-(function(){
-  const app = document.getElementById('app');
-  const setYear = ()=>{ var y=document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); } };
-  setYear();
+// Minimal router + robust CTA
+const el = (s)=>document.querySelector(s);
+function setYear(){ const y=el('#year'); if(y) y.textContent=new Date().getFullYear(); }
 
-  function bindStartNova(){
-    ['startNovaTop','startNovaBackup'].forEach(id => {
-      const el = document.getElementById(id);
-      if(!el) return;
-      const go = ()=>{ location.hash = '#/nova'; };
-      el.addEventListener('click', e=>{ e.preventDefault(); go(); });
-      el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); }});
-    });
-  }
+function bindStartNova(){
+  const cta = document.getElementById('startNovaCta');
+  if(!cta) return;
+  const go = ()=>{ location.hash = '#/nova'; };
+  cta.addEventListener('click', (e)=>{ e.preventDefault(); go(); });
+  cta.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); }});
+}
 
-  function viewHome(){
-    return document.querySelector('main').innerHTML; // prerendered content
-  }
-
-  function viewNova(){
-    return `
-      <section class="section">
+function render(route){
+  // Home is pre-rendered; just bind CTA
+  if(route==='home' || !route){ bindStartNova(); return; }
+  if(route==='nova'){
+    const app = el('#app');
+    app.innerHTML = `
+      <section class="section card">
         <h1>Discover with NOVA</h1>
-        <p>Select the traits that describe you. (Demo view)</p>
+        <p>Select the traits that describe you (demo view so you can continue testing):</p>
         <div class="traits">
           ${['Creative','Innovative','Problem Solver','Planner','Patient','Design Thinker','Resilient']
-             .map(t => `<label class="chip"><input type="checkbox"> ${t}</label>`).join('')}
+            .map(t=>`<label class="chip"><input type="checkbox"> ${t}</label>`).join('')}
         </div>
-        <div class="actions">
-          <a href="#/home" class="btn">Back</a>
-        </div>
+        <div class="actions"><a class="btn" href="#/home">Back</a></div>
       </section>`;
   }
+}
 
-  function render(){
-    const hash = (location.hash || '#/home').replace(/^#+/,'#');
-    if(hash.startsWith('#/nova')){
-      app.innerHTML = viewNova();
-    } else {
-      app.innerHTML = viewHome();
-      bindStartNova();
-    }
-  }
+function routeFromHash(){
+  const raw = location.hash || '#/home';
+  const h = raw.replace(/^#+/,'').replace(/^\//,'').trim();
+  return h || 'home';
+}
 
-  window.addEventListener('hashchange', render);
-  document.addEventListener('DOMContentLoaded', render);
-  render();
-})();
+window.addEventListener('hashchange', ()=>render(routeFromHash()));
+document.addEventListener('DOMContentLoaded', ()=>{ setYear(); render(routeFromHash()); bindStartNova(); });

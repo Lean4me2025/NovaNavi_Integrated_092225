@@ -3,34 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NOVA + NAVI — Welcome</title>
+  <title>NOVA + NAVI — Discover your purpose → Launch your work</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-dark">
   <header class="site-header">
     <div class="brand">NOVA + NAVI</div>
     <nav class="topnav">
       <a href="#/home">Home</a>
       <a href="#/nova">Discover (NOVA)</a>
+      <a href="#/result">My Snapshot</a>
+      <a href="#/reflect">Reflect</a>
+      <a href="#/navi">Build (NAVI)</a>
     </nav>
   </header>
 
   <main id="app">
-    <section class="section">
+    <section class="section card">
       <h1>Welcome to NOVA + NAVI</h1>
-      <div class="hero-cta">
-        <a id="startNovaTop" class="btn primary" href="#/nova"
-           onclick="window.location.hash='#/nova'; return false;">Start with NOVA</a>
-        <button id="startNovaBackup" class="btn" onclick="window.location.hash='#/nova';">Start</button>
-      </div>
+      <p class="stat"><strong>🌍 Did you know?</strong> <em>89% of people say they don’t truly know their purpose.</em></p>
+      <p>NOVA is on your side. She helps you <strong>discover and understand your purpose</strong> by uncovering the traits that make you who you are.</p>
 
       <div class="phase">
         <h2>Phase 1 — Who You Are (NOVA)</h2>
-        <p>NOVA is on your side. She gently guides you through selecting the traits that describe you best.</p>
+        <p>NOVA gently guides you through selecting the traits that describe you best. She connects those traits to deeper attributes and shows career paths where your strengths naturally fit.</p>
       </div>
+
       <div class="phase">
         <h2>Phase 2 — Where You’re Going (NAVI)</h2>
-        <p>NAVI turns discovery into resumes, letters, roles, and first steps.</p>
+        <p>NAVI turns discovery into action: resumes & cover letters that highlight your strengths, roles aligned with your attributes, and training & steps to help you grow into your purpose.</p>
       </div>
 
       <h3>How it works</h3>
@@ -39,12 +40,19 @@
         <div class="step-box"><h4>See your results</h4><p>Get matched to attributes & roles.</p></div>
         <div class="step-box"><h4>Reflect</h4><p>Pause and consider your journey.</p></div>
         <div class="step-box"><h4>Choose a role</h4><p>Pick a focus role that fits.</p></div>
-        <div class="step-box last-step"><h4>Build with NAVI</h4><p>Turn discovery into resumes & steps.</p></div>
+        <div class="step-box last-step"><h4>Build with NAVI</h4><p>Turn discovery into resumes, letters, steps.</p></div>
       </div>
+
+      <div class="steps-cta">
+        <a id="startNovaCta" class="btn primary" href="#/nova" role="button">Start with NOVA</a>
+      </div>
+
+      <p class="closing">✨ This isn’t just job matching — it’s uncovering who you were designed to be, and then charting where you can go.</p>
     </section>
   </main>
 
-  <footer class="site-footer">© <span id="year"></span> NOVA + NAVI</footer>
-  <script src="app.js"></script>
+  <footer class="site-footer">© <span id="year"></span> NOVA + NAVI — Discover your purpose → Launch your work</footer>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
