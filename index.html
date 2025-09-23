@@ -1,34 +1,40 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NOVA + NAVI — Discover your purpose → Launch your work</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="theme-dark">
-  <header class="site-header">
-    <div class="brand">NOVA + NAVI</div>
-    <nav class="topnav">
-      <a href="#/home">Home</a>
-      <a href="#/nova">Discover (NOVA)</a>
-      <a href="#/result">My Snapshot</a>
-      <a href="#/reflect">Reflect</a>
-      <a href="#/plan">Plans</a>
-      <a href="#/navi">Build (NAVI)</a>
-    </nav>
-  </header>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA • Welcome</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head><body>
 
-  <main id="app">
-    <section class="section card">
-      <h1>Welcome to NOVA + NAVI</h1>
-      <p class="stat"><strong>🌍 89% of people say they don’t truly know their purpose.</strong></p>
-      <p>NOVA helps you <strong>discover who you are</strong> by selecting traits that fit you. Then NAVI turns that discovery into <strong>roles, resumes, letters, and next steps</strong>.</p>
-      <div class="steps-cta"><a id="startNovaCta" class="btn primary" href="#/nova">Start with NOVA</a></div>
-    </section>
-  </main>
+<div class="header">
+  <div class="brand"><div class="logo"></div> NOVA</div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="traits.html">Traits</a>
+    <a href="results.html">Results</a>
+    <a href="reflection.html">Reflection</a>
+    <a href="navi.html">Navi</a>
+  </nav>
+</div>
 
-  <footer class="site-footer">© 2025 NOVA + NAVI — Discover your purpose → Launch your work</footer>
-  <script src="app.js"></script>
-</body>
-</html>
+<div class="container">
+  <div class="hero">
+    <span class="kicker">Welcome to Nova</span>
+    <h1>Discover your purpose.<br/>Step into aligned work.</h1>
+    <p class="lead">Nova scans your strengths and maps them to roles where you naturally thrive. Start with the 50-trait discovery, then see your aligned roles, reflect, and flow into Navi for action.</p>
+    <div class="btnrow">
+      <button class="button" onclick="go('traits.html')">Start with Nova</button>
+      <a class="button secondary" href="results.html">View Results</a>
+    </div>
+  </div>
+  <div class="card block">
+    <h2>What to expect</h2>
+    <ul class="small">
+      <li>Fast 50‑trait check — pick what feels true.</li>
+      <li>See a focused list of roles where your strengths already align.</li>
+      <li>Reflect on the results to sharpen insight.</li>
+      <li>Continue into Navi to build your plan, resume, and outreach.</li>
+    </ul>
+  </div>
+</div>
+<div class="footer small">© 2025 Nova • Bridge to Navi</div>
+</body></html>

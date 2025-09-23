@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA • Results</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head><body>
+
+<div class="header">
+  <div class="brand"><div class="logo"></div> NOVA</div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="traits.html">Traits</a>
+    <a href="results.html">Results</a>
+    <a href="reflection.html">Reflection</a>
+    <a href="navi.html">Navi</a>
+  </nav>
+</div>
+
+<div class="container">
+  <h1>Your Aligned Roles</h1>
+  <div class="card block">
+    <p><strong>How your results are built:</strong> Nova compares your selected strengths against the skills and requirements of more than 400 career paths. The outcome is a focused list of roles where your strengths are already aligned — so you can see where you’re likely to excel and what training would lift you the fastest.</p>
+  </div>
+  <div class="block">
+    <div class="small">Your selected traits:</div>
+    <div id="selected-traits" class="block"></div>
+  </div>
+  <div class="card block">
+    <table>
+      <thead><tr><th>Role</th><th>Why it fits</th><th>Match</th></tr></thead>
+      <tbody id="roles-table"></tbody>
+    </table>
+  </div>
+  <div class="btnrow">
+    <button class="button secondary" onclick="go('traits.html')">Back to Traits</button>
+    <button class="button" onclick="go('reflection.html')">Continue to Reflection</button>
+  </div>
+</div>
+</body></html>
