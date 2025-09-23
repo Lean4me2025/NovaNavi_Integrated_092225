@@ -76,6 +76,7 @@ function render(route){
   switch(route){
     case 'home':
       app.innerHTML = homeView();
+      bindStartNova();
       break;
     case 'nova':
       app.innerHTML = Nova.view();
@@ -155,7 +156,16 @@ document.addEventListener('click', (e) => {
   }, 0);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+function bindStartNova(){
+  const cta = document.getElementById('startNovaCta');
+  if (!cta) return;
+  const go = () => { location.hash = '#/nova'; };
+  cta.addEventListener('click', (e)=>{ e.preventDefault(); go(); });
+  cta.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+  });
+}
+document.addEventListener('DOMContentLoaded', () => { bindStartNova(); 
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   render(routeFromHash());
