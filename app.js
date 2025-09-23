@@ -1,85 +1,111 @@
-// Router + simple persistence across steps
-(function(){
-  const views = {
-    welcome: document.getElementById('view-welcome'),
-    traits: document.getElementById('view-traits'),
-    results: document.getElementById('view-results'),
-    reflection: document.getElementById('view-reflection'),
-    choosePath: document.getElementById('view-choose-path'),
-    where: document.getElementById('view-where'),
-    plans: document.getElementById('view-plans')
-  };
-  const crumbs = document.getElementById('crumbs');
 
-  function show(view){
-    Object.values(views).forEach(v => v.classList.add('hide'));
-    views[view].classList.remove('hide');
-    crumbs.textContent = views[view].dataset.step;
-    location.hash = view;
-  }
+// Simple SPA navigation & state
+const S = {
+  page: 'welcome',
+  selectedTraits: new Set(),
+  reflectionChoice: null
+};
 
-  // handle button navigation
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-goto]');
-    if(!btn) return;
-    const next = btn.getAttribute('data-goto');
-    if(next === 'where-are-you') show('where');
-    else show(next.replace(/-/g,'')); // normalize ids like 'choose-path'
+const $ = (q, scope=document) => scope.querySelector(q);
+const $$ = (q, scope=document) => Array.from(scope.querySelectorAll(q));
+
+function go(page){
+  S.page = page;
+  $$('.section').forEach(s => s.classList.remove('active'));
+  $('#' + page).classList.add('active');
+  window.scrollTo({top:0, behavior:'instant'});
+  updateNavActive(page);
+  if (page === 'results') renderResults();
+  if (page === 'plans') ensurePayhip();
+}
+
+function updateNavActive(page){
+  $$('.nav-btn').forEach(b => b.classList.remove('active'));
+  const map = {welcome:'nav-home', traits:'nav-discover', results:'nav-snapshot'};
+  if (map[page]) $('#'+map[page]).classList.add('active');
+}
+
+async function loadTraits(){
+  const res = await fetch('traits.json');
+  const traits = await res.json();
+  const grid = $('#traitsGrid');
+  grid.innerHTML = '';
+  traits.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'trait';
+    div.textContent = t;
+    div.onclick = () => {
+      if (S.selectedTraits.has(t)) {
+        S.selectedTraits.delete(t);
+        div.classList.remove('active');
+      } else {
+        S.selectedTraits.add(t);
+        div.classList.add('active');
+      }
+      $('#toResults').disabled = S.selectedTraits.size < 5;
+    };
+    grid.appendChild(div);
   });
+}
 
-  // capture selected path
-  let chosenPath = null;
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-path]');
-    if(!btn) return;
-    chosenPath = btn.getAttribute('data-path');
-    localStorage.setItem('navi_chosen_path', chosenPath);
+function renderResults(){
+  const chosen = Array.from(S.selectedTraits).slice(0, 10);
+  $('#chosenTraits').textContent = chosen.join(', ');
+  // toy aligned roles based on traits count
+  const roles = [
+    'Strategy Consultant','Product Manager','Data Analyst',
+    'UX Researcher','Operations Lead','Customer Success Manager'
+  ];
+  const list = $('#rolesList');
+  list.innerHTML = '';
+  roles.forEach(r => {
+    const li = document.createElement('li');
+    li.textContent = r;
+    list.appendChild(li);
   });
+}
 
-  // reflection persistence
-  const keyWhere = 'nova_reflect_where_am_i';
-  const keyMile = 'nova_reflect_milestones';
-  const txtWhere = document.getElementById('where-am-i');
-  const inputM = document.getElementById('milestones');
-  const saveBtn = document.getElementById('save-reflection');
-  function restoreReflection(){
-    if(txtWhere) txtWhere.value = localStorage.getItem(keyWhere) || '';
-    if(inputM) inputM.value = localStorage.getItem(keyMile) || '';
-  }
-  function saveReflection(){
-    if(txtWhere) localStorage.setItem(keyWhere, txtWhere.value.trim());
-    if(inputM) localStorage.setItem(keyMile, inputM.value.trim());
-    alert('Reflection saved.');
-  }
-  if(saveBtn) saveBtn.addEventListener('click', saveReflection);
+function selectReflection(id){
+  S.reflectionChoice = id;
+  $$('#reflection .card').forEach(c => c.style.borderColor = 'rgba(255,255,255,.12)');
+  $('#card-'+id).style.borderColor = 'rgba(74,133,255,.8)';
+  $('#continueToPlans').disabled = false;
+}
 
-  // where-are-you persistence
-  const selStatus = document.getElementById('status');
-  const selResume = document.getElementById('resume');
-  const inputTime = document.getElementById('time');
-  const saveWhere = document.getElementById('save-where');
-  function restoreWhere(){
-    if(selStatus) selStatus.value = localStorage.getItem('navi_status') || '';
-    if(selResume) selResume.value = localStorage.getItem('navi_resume') || '';
-    if(inputTime) inputTime.value = localStorage.getItem('navi_time') || '';
+function ensurePayhip(){
+  // Load Payhip script once
+  if (!document.querySelector('script[src*="payhip.com/payhip.js"]')){
+    const s = document.createElement('script');
+    s.src = "https://payhip.com/payhip.js";
+    s.async = true;
+    document.head.appendChild(s);
   }
-  function saveWhereNow(){
-    if(selStatus) localStorage.setItem('navi_status', selStatus.value);
-    if(selResume) localStorage.setItem('navi_resume', selResume.value);
-    if(inputTime) localStorage.setItem('navi_time', inputTime.value);
-    alert('Saved.');
-  }
-  if(saveWhere) saveWhere.addEventListener('click', saveWhereNow);
+}
 
-  // init route
-  const start = (location.hash || '#welcome').replace('#','');
-  const valid = {welcome:1, traits:1, results:1, reflection:1, 'choose-path':1, where:1, plans:1};
-  if(!valid[start]) show('welcome');
-  else {
-    if(start === 'choose-path') show('choosePath');
-    else if(start === 'where-are-you') show('where');
-    else show(start);
-  }
-  restoreReflection();
-  restoreWhere();
-})();
+window.addEventListener('DOMContentLoaded', () => {
+  // nav
+  $('#nav-home').onclick    = () => go('welcome');
+  $('#nav-discover').onclick= () => go('traits');
+  $('#nav-snapshot').onclick= () => go('results');
+
+  // welcome
+  $('#startNova').onclick = () => go('traits');
+
+  // traits
+  loadTraits();
+  $('#toResults').onclick = () => go('results');
+
+  // results
+  $('#toReflection').onclick = () => go('reflection');
+
+  // reflection
+  $('#backToResults').onclick = () => go('results');
+  $('#continueToPlans').onclick = () => go('plans');
+
+  // plans
+  $('#toNavi').onclick = () => go('navi');
+  $('#toThanks').onclick = () => go('thanks');
+
+  // start
+  go('welcome');
+});
