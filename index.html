@@ -1,136 +1,28 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NOVA + NAVI — Integrated Flow</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Welcome · NOVA</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <nav class="row">
-      <div class="brand">NOVA + NAVI</div>
-      <div class="spacer"></div>
-      <button id="nav-home" class="nav-btn">Home</button>
-      <button id="nav-discover" class="nav-btn">Discover (NOVA)</button>
-      <button id="nav-snapshot" class="nav-btn">My Snapshot</button>
-    </nav>
-  </header>
 
-  <main class="container">
-    <!-- Welcome -->
-    <section id="welcome" class="section">
-      <h1>Welcome</h1>
-      <p>Start with NOVA to discover your purpose and strengths. Then move through Reflection to select your path and unlock NAVI.</p>
-      <div class="inline-actions">
-        <button id="startNova" class="btn">Start with NOVA</button>
-      </div>
-    </section>
+<header class="container header">
+  <div class="brand">🌟 NOVA + NAVI</div>
+  <nav class="nav"><a href="index.html" class="active">Home</a><a href="traits.html" class="">Discover</a><a href="results.html" class="">My Snapshot</a><a href="reflection.html" class="">Reflect</a><a href="offers.html" class="">Plans</a><a href="navi.html" class="">Build</a></nav>
+</header>
 
-    <!-- Trait Selection -->
-    <section id="traits" class="section">
-      <h1>Trait Selection</h1>
-      <p>Select at least 5 traits that sound most like you. You can choose up to 10.</p>
-      <div id="traitsGrid" class="grid traits"></div>
-      <div class="inline-actions">
-        <button class="btn secondary" onclick="go('welcome')">Back</button>
-        <button id="toResults" class="btn" disabled>See Results</button>
-      </div>
-    </section>
-
-    <!-- Results -->
-    <section id="results" class="section">
-      <h1>Your Results</h1>
-      <div class="card">
-        <div class="card-title">How these results are created</div>
-        <p>We compare your selected strengths with requirements across 400+ career paths (skills, responsibilities, growth trajectory). The outcome is a focused list of roles where your strengths are already aligned—so you can move faster with clarity.</p>
-      </div>
-      <h2>Your Selected Traits</h2>
-      <p id="chosenTraits" class="small">—</p>
-      <h2>Aligned Roles</h2>
-      <ul id="rolesList"></ul>
-      <div class="inline-actions">
-        <button class="btn secondary" onclick="go('traits')">Back to Traits</button>
-        <button id="toReflection" class="btn">Continue to Reflection</button>
-      </div>
-    </section>
-
-    <!-- Reflection -->
-    <section id="reflection" class="section">
-      <h1>Reflection</h1>
-      <p>Click one of the options below to choose where you are in your journey.</p>
-      <div class="grid cards">
-        <div id="card-lost" class="card" onclick="selectReflection('lost')">
-          <div class="card-title">I feel lost and unsure</div>
-          <p>I'm unclear where I belong. Help me translate my traits into viable paths.</p>
-        </div>
-        <div id="card-starting" class="card" onclick="selectReflection('starting')">
-          <div class="card-title">I'm just starting out</div>
-          <p>I want to choose a direction that matches who I am.</p>
-        </div>
-        <div id="card-mismatch" class="card" onclick="selectReflection('mismatch')">
-          <div class="card-title">I'm in a field that doesn't fit</div>
-          <p>I've built skills, but NOVA points to a better match. Help me realign.</p>
-        </div>
-        <div id="card-partly" class="card" onclick="selectReflection('partly')">
-          <div class="card-title">I'm partly aligned</div>
-          <p>I'm close to my purpose path. Help me refine and specialize.</p>
-        </div>
-      </div>
-      <div class="inline-actions">
-        <button id="backToResults" class="btn secondary">Back to Snapshot</button>
-        <button id="continueToPlans" class="btn" disabled>Save & Continue to Plans</button>
-      </div>
-    </section>
-
-    <!-- Choose Your Path (Plans with PayHip) -->
-    <section id="plans" class="section">
-      <h1>Choose Your Path</h1>
-      <p>Select a plan to unlock NAVI and start building your next steps.</p>
-      <div class="grid cards">
-        <div class="plan">
-          <h3>Starter</h3>
-          <span class="badge">Entry</span>
-          <p>Nova 50‑trait report + basic resume builder + role suggestions.</p>
-          <a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Starter</a>
-        </div>
-        <div class="plan">
-          <h3>Pro Suite</h3>
-          <span class="badge">Most Popular</span>
-          <p>Everything in Starter plus resume rewrite AI, unlimited cover letters, company intelligence, and advanced filters.</p>
-          <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Pro Suite</a>
-        </div>
-      </div>
-      <div class="inline-actions">
-        <button class="btn secondary" onclick="go('reflection')">Back</button>
-        <button id="toNavi" class="btn">Continue to NAVI</button>
-      </div>
-      <p class="small">PayHip buttons load securely. If you don’t see them, check network/script blockers.</p>
-    </section>
-
-    <!-- NAVI Intro -->
-    <section id="navi" class="section">
-      <h1>NAVI</h1>
-      <p>Your strategy hub. We’ll map your chosen plan to concrete actions—resume, cover letters, saved searches, and weekly targets.</p>
-      <div class="inline-actions">
-        <button class="btn secondary" onclick="go('plans')">Back to Plans</button>
-        <button id="toThanks" class="btn">Finish</button>
-      </div>
-    </section>
-
-    <!-- Thank You -->
-    <section id="thanks" class="section">
-      <h1>All Set</h1>
-      <p>Thank you for walking through NOVA → Reflection → NAVI. You’re ready to launch your work.</p>
-      <div class="inline-actions">
-        <button class="btn" onclick="go('welcome')">Restart</button>
-      </div>
-    </section>
-
-    <div class="footer">© 2025 NOVA + NAVI — Discover your purpose → Launch your work</div>
-  </main>
-
-  <script src="app.js"></script>
+<main class="container">
+  <section class="hero card">
+    <h1>Welcome to NOVA</h1>
+    <p>Discover your purpose, align your strengths, and step into a focused path forward.</p>
+    <div class="controls">
+      <a class="btn" href="traits.html">Start with NOVA</a>
+      <a class="btn secondary" href="results.html">View My Snapshot</a>
+    </div>
+  </section>
+</main>
+<footer class="footer container">© 2025 NOVA + NAVI</footer>
 </body>
 </html>

@@ -1,35 +1,58 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA • Reflection</title>
-<link rel="stylesheet" href="styles.css">
-<script defer src="app.js"></script>
-</head><body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflection · NOVA</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
 
-<div class="header">
-  <div class="brand"><div class="logo"></div> NOVA</div>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="traits.html">Traits</a>
-    <a href="results.html">Results</a>
-    <a href="reflection.html">Reflection</a>
-    <a href="navi.html">Navi</a>
-  </nav>
-</div>
+<header class="container header">
+  <div class="brand">🌟 NOVA + NAVI</div>
+  <nav class="nav"><a href="index.html" class="">Home</a><a href="traits.html" class="">Discover</a><a href="results.html" class="">My Snapshot</a><a href="reflection.html" class="active">Reflect</a><a href="offers.html" class="">Plans</a><a href="navi.html" class="">Build</a></nav>
+</header>
 
-<div class="container">
-  <h1>Reflection</h1>
-  <p class="lead">Take a moment to write what resonates and what surprised you. This locks in clarity before we move into Navi.</p>
-  <div class="card block">
-    <label for="reflection-notes" class="small">Your notes</label>
-    <textarea id="reflection-notes" placeholder="What patterns do you notice across your top roles? What work gives you energy? What would you like to explore next?"></textarea>
-    <div class="btnrow">
-      <button id="save-reflection" class="button">Save Reflection</button>
-      <span id="saved-msg" class="small"></span>
+<main class="container">
+  <section class="card">
+    <h1>Reflection</h1>
+    <p class="small">Where are you starting from today? Choose the statement that best matches your situation.</p>
+    <div class="reflection-options">
+      <label class="option">
+        <input type="radio" name="where" value="Exploring purpose for the first time">
+        <div><strong>Exploring purpose for the first time</strong><br><span class="small">You want clarity and a simple starting point.</span></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="where" value="I know my purpose, need a plan">
+        <div><strong>I know my purpose, need a plan</strong><br><span class="small">You’re ready to convert clarity into action.</span></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="where" value="Career pivot or restart">
+        <div><strong>Career pivot or restart</strong><br><span class="small">You’re re-aligning and want a guided path.</span></div>
+      </label>
+      <label class="option">
+        <input type="radio" name="where" value="Sharpening and leveling up">
+        <div><strong>Sharpening and leveling up</strong><br><span class="small">You’re optimizing, not starting over.</span></div>
+      </label>
     </div>
-  </div>
-  <div class="btnrow">
-    <button class="button secondary" onclick="go('results.html')">Back to Results</button>
-    <button class="button" onclick="go('navi.html')">Go to Navi</button>
-  </div>
-</div>
-</body></html>
+    <div class="controls">
+      <button id="saveRef" class="btn" disabled>Save & Continue</button>
+      <a class="btn secondary" href="results.html">Back</a>
+    </div>
+  </section>
+</main>
+<footer class="footer container">© 2025 NOVA + NAVI</footer>
+<script>
+const radios = document.querySelectorAll('input[name="where"]');
+const saveBtn = document.getElementById('saveRef');
+radios.forEach(r => r.addEventListener('change', () => {
+  saveBtn.disabled = false;
+}));
+saveBtn.addEventListener('click', () => {
+  const sel = Array.from(radios).find(r => r.checked)?.value || '';
+  localStorage.setItem('nova_reflection_where', sel);
+  window.location.href = 'offers.html';
+});
+</script>
+</body>
+</html>

@@ -1,37 +1,36 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA → NAVI • Bridge</title>
-<link rel="stylesheet" href="styles.css">
-<script defer src="app.js"></script>
-</head><body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NAVI · Start</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
 
-<div class="header">
-  <div class="brand"><div class="logo"></div> NOVA</div>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="traits.html">Traits</a>
-    <a href="results.html">Results</a>
-    <a href="reflection.html">Reflection</a>
-    <a href="navi.html">Navi</a>
-  </nav>
-</div>
+<header class="container header">
+  <div class="brand">🌟 NOVA + NAVI</div>
+  <nav class="nav"><a href="index.html" class="">Home</a><a href="traits.html" class="">Discover</a><a href="results.html" class="">My Snapshot</a><a href="reflection.html" class="">Reflect</a><a href="offers.html" class="">Plans</a><a href="navi.html" class="active">Build</a></nav>
+</header>
 
-<div class="container">
-  <span class="kicker">Bridge to Navi</span>
-  <h1>Turn clarity into action</h1>
-  <p class="lead">Navi picks up from here — turning your Nova insights into a strategy, resume, and outreach plan.</p>
-  <div class="card block">
-    <h2>What Navi will do first</h2>
-    <ul class="small">
-      <li>Confirm your focus roles based on Nova</li>
-      <li>Draft a targeted resume and cover letters</li>
-      <li>Suggest training to close the fastest gaps</li>
-      <li>Organize job search sprints and outreach</li>
-    </ul>
-  </div>
-  <div class="btnrow">
-    <button class="button secondary" onclick="go('reflection.html')">Back to Reflection</button>
-    <a class="button" href="#">Enter Navi</a>
-  </div>
-</div>
-</body></html>
+<main class="container">
+  <section class="card">
+    <h1>NAVI — Start</h1>
+    <p class="small">Welcome to NAVI. Your tools will align to your selection on the previous page.</p>
+    <div id="reflectBlock" class="card" style="margin-top:12px">
+      <strong>Starting From:</strong>
+      <div id="startingFrom" class="small"></div>
+    </div>
+    <div class="controls">
+      <a class="btn secondary" href="offers.html">Back to Offers</a>
+      <a class="btn" href="index.html">Return Home</a>
+    </div>
+  </section>
+</main>
+<footer class="footer container">© 2025 NOVA + NAVI</footer>
+<script>
+document.getElementById('startingFrom').textContent =
+  localStorage.getItem('nova_reflection_where') || 'No selection captured yet.';
+</script>
+</body>
+</html>

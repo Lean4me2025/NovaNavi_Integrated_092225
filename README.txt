@@ -1,18 +1,25 @@
-NOVA → NAVI Full Integrated Flow
-Order: Welcome → Trait Selection → Results → Reflection → Choose Your Path → Where Are You → NAVI Plans
+NOVA + NAVI Integrated Flow (Static Build)
+-----------------------------------------
+Flow:
+1) index.html (Welcome)
+2) traits.html (Trait Selection — stores to localStorage)
+3) results.html (Snapshot + CTA to Reflection)
+4) reflection.html (Select 1 of 4; Save & Continue enables)
+5) offers.html (2x2 grid of Payhip green buttons; IDs included)
+6) navi.html (NAVI Start; displays your Reflection selection)
 
-Files:
-- index.html  : Single-Page App with all steps + PayHip embeds
-- style.css   : Shared styles (dark theme)
-- app.js      : Router + localStorage persistence for Reflection & Where-Are-You
+Payhip Buttons (set to Available on your dashboard):
+- Starter: GdfU7
+- Pro: knC1Z
+- Pro Suite: re4Hy
+- Book: N7Lvg
 
-PayHip (live):
-- Starter: https://payhip.com/b/GdfU7
-- Pro: https://payhip.com/b/knC1Z
-- Pro Suite: https://payhip.com/b/re4Hy
-- Guide: https://payhip.com/b/N7Lvg
+Notes:
+- Pure static HTML/CSS/JS; no frameworks; deploy anywhere (Vercel-ready).
+- Reflection page enables "Save & Continue" ONLY after a selection is made.
+- Offers page uses Payhip's embed script in <head>; buttons are green by request.
+- Traits page uses placeholder "Trait 01..50" names. Replace as needed by editing traits.html.
 
-Deploy:
-1) Upload all files (GitHub/Vercel). Ensure index.html is the entry point.
-2) Landing shows Welcome. Use built-in buttons to proceed through each step.
-3) Replace the sample trait grid and results block with your live components when ready (no routing changes needed).
+Deployment:
+- Upload this folder or the ZIP to your repo; set Vercel to serve index.html as root.
+- Each page has top navigation links for quick QA.
