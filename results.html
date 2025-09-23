@@ -9,7 +9,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 <main class="container">
   <section class="card">
     <h1>Your Snapshot</h1>
-    <p class="small">This list isn’t random — it’s built from the skills and requirements of <strong>400+ career paths</strong>, focusing you where your strengths already fit.</p>
+    <p class="small">This isn’t random — your aligned roles are derived from the skills & requirements of <strong>400+ career paths</strong>.</p>
     <div id="summary" style="margin-top:12px"></div>
     <div class="controls">
       <a class="btn" href="reflection.html">Continue to Reflection</a>
@@ -33,7 +33,7 @@
 <script>
 const el = document.getElementById('summary');
 const traits = JSON.parse(localStorage.getItem('nova_traits') || '[]');
-el.innerHTML = `<p><strong>Selected (50 available):</strong> ${traits.length>0 ? traits.join(', ') : 'None selected yet.'}</p>`;
+el.innerHTML = `<p><strong>Traits Selected:</strong> ${traits.length>0 ? traits.join(', ') : 'None selected yet.'}</p>`;
 </script>
 </body>
 </html>
