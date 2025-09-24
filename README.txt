@@ -9,7 +9,7 @@ Files:
 - navi-dashboard.html (Dashboard with optional Progress Tracker)
 - navi-settings.html (Toggle Progress Tracker)
 Notes:
-- Trait selection minimum is 8 (MIN_TRAITS). See traits.html.
+- Trait selection minimum is 5 (MIN_TRAITS). See traits.html.
 - All user choices are saved locally via localStorage (novaSelectedTraits, naviProgressEnabled, novaReflection, novaResultBlob)
 - Replace PayHip placeholders with actual embed code or links.
 - Drop this bundle into your repo root or a subfolder and point routes accordingly.

@@ -2,15 +2,11 @@
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>NOVA • Traits</title>
 <style>
-:root{
-  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
-}
+:root{ --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff; }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{
-  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
-}
+body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text); }
 .wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
 .card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
@@ -18,15 +14,15 @@ body{
 .btn.primary{background:var(--accent);color:#111}
 .btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
 .small{font-size:.95rem;opacity:.9}
-.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
-a{color:var(--accent)}
-
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.tile{padding:14px;border-radius:10px;border:1px solid #ffffff22;cursor:pointer;text-align:center}
-.tile.selected{outline:3px solid rgba(253,186,33,0.35);box-shadow:0 6px 20px rgba(11,35,71,0.6)}
+.tile{padding:14px;border-radius:10px;border:1px solid #ffffff22;cursor:pointer;text-align:center;user-select:none}
+.tile.selected{outline:3px solid rgba(253,186,33,0.45);box-shadow:0 6px 20px rgba(11,35,71,0.6)}
 .bar{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
-#seeResultsBtn.disabled{opacity:.6;pointer-events:none}
 .controls{display:flex;gap:8px;align-items:center}
+/* Safety: class alone should NOT block clicks */
+button.disabled:not([disabled]){pointer-events:auto;opacity:1}
+/* When actually disabled, block */
+button[disabled]{pointer-events:none;opacity:.6}
 </style>
 </head>
 <body>
@@ -34,15 +30,13 @@ a{color:var(--accent)}
     <header class="header"><div><strong>NOVA • Trait Selection</strong></div><nav><a href="index.html">Home</a> • <a href="navi-settings.html">Settings</a></nav></header>
     <section class="card">
       <h2>Select your top traits</h2>
-      <p class="small">Pick at least <strong id="minReq">8</strong> traits. Selections are saved locally so you can continue if you leave and return.</p>
+      <p class="small">Pick at least <strong id="minReq">5</strong> traits.</p>
 
       <div style="margin-top:1rem;">
         <button id="clearBtn" class="btn ghost">Clear selections</button>
       </div>
 
-      <div class="grid" id="traitsGrid" style="margin-top:1rem;">
-        <!-- Tiles inserted by JS -->
-      </div>
+      <div class="grid" id="traitsGrid" style="margin-top:1rem;"></div>
 
       <div class="bar">
         <div><span id="selectedCount">0</span> selected</div>
@@ -55,8 +49,8 @@ a{color:var(--accent)}
   </div>
 
 <script>
-const MIN_TRAITS = 8;
-const traits = [
+const MIN_TRAITS = 5;
+const TRAIT_LIST = [
 "Communicator","Resilient","Initiative-Taker","Organized","Curious","Mentor","Visionary","Data-Driven",
 "Customer-Focused","Results-Oriented","Ethical","Calm Under Pressure","Decision-Maker","Learner","Persistent",
 "Relationship-Builder","Presenter","Planner","Entrepreneurial","Systems Thinker","Resourceful","Independent",
@@ -66,83 +60,91 @@ const traits = [
 ];
 
 const grid = document.getElementById('traitsGrid');
-const selectedCount = document.getElementById('selectedCount');
+const countEl = document.getElementById('selectedCount');
 const seeBtn = document.getElementById('seeResultsBtn');
 const clearBtn = document.getElementById('clearBtn');
 const backBtn = document.getElementById('backBtn');
 
-let selected = new Set();
-
-// render tiles
-function makeTile(t){
-  const d = document.createElement('div');
-  d.className='tile';
-  d.setAttribute('data-trait', t);
-  d.textContent = t;
-  d.addEventListener('click', ()=> toggleTrait(d,t));
-  return d;
-}
-traits.forEach(t => grid.appendChild(makeTile(t)));
-
-// Helpers
-function saveSelections(){ localStorage.setItem('novaSelectedTraits', JSON.stringify(Array.from(selected))); }
-function loadSelections(){
-  const raw = localStorage.getItem('novaSelectedTraits');
-  if(raw){ try{ const arr = JSON.parse(raw); arr.forEach(a=>selected.add(a)); }catch(e){} }
-}
-function reflectSelectionsToDOM(){
-  document.querySelectorAll('.tile').forEach(tile=>{
-    const key = tile.getAttribute('data-trait');
-    if(selected.has(key)){ tile.classList.add('selected'); } else tile.classList.remove('selected');
+// Render fresh tiles every load -> prevents bfcache pre-selected ghosts
+function renderTiles(){
+  grid.innerHTML = '';
+  TRAIT_LIST.forEach(name => {
+    const d = document.createElement('div');
+    d.className = 'tile';
+    d.setAttribute('data-trait', name);
+    d.textContent = name;
+    grid.appendChild(d);
   });
 }
-function updateUI(){
-  selectedCount.textContent = selected.size;
-  if(selected.size >= MIN_TRAITS){
-    seeBtn.removeAttribute('disabled'); seeBtn.classList.remove('disabled'); seeBtn.dataset.enabled='1';
-  } else {
-    seeBtn.setAttribute('disabled','true'); seeBtn.classList.add('disabled'); seeBtn.dataset.enabled='0';
-  }
-}
+renderTiles();
 
-// toggle
-function toggleTrait(el,t){
-  if(selected.has(t)){ selected.delete(t); el.classList.remove('selected'); }
-  else { selected.add(t); el.classList.add('selected'); }
-  saveSelections(); updateUI();
+// Ensure no stale state on arrival (always start clean)
+function hardReset(){
+  localStorage.removeItem('novaSelectedTraits');
+  Array.from(document.querySelectorAll('.tile')).forEach(el => el.classList.remove('selected'));
+  updateUI();
 }
+hardReset();
 
-// clear
-clearBtn.addEventListener('click', ()=>{
-  selected.clear(); saveSelections(); reflectSelectionsToDOM(); updateUI();
+// Event delegation for robust binding
+grid.addEventListener('click', (e) => {
+  const tile = e.target.closest('.tile');
+  if(!tile) return;
+  tile.classList.toggle('selected');
+  saveFromDOM();
+  updateUI();
+}, {passive:true});
+
+// Clear button
+clearBtn.addEventListener('click', () => {
+  Array.from(document.querySelectorAll('.tile.selected')).forEach(el => el.classList.remove('selected'));
+  saveFromDOM();
+  updateUI();
 });
 
-// back
-backBtn.addEventListener('click', ()=>{ window.location.href='index.html'; });
+// Back
+backBtn.addEventListener('click', ()=> window.location.href='index.html');
 
-// On load: defensive reset once per visit (to avoid stale cross-session)
-function ensureFreshStart(){
-  if(!sessionStorage.getItem('traitsResetThisVisit')){
-    // clear stored trait UI state but keep localStorage if user intentionally had selections? We follow user's request to reset on start: remove storage.
-    localStorage.removeItem('novaSelectedTraits');
-    sessionStorage.setItem('traitsResetThisVisit','1');
+// Compute selected from DOM to avoid Set desync
+function selectedCountFromDOM(){
+  return document.querySelectorAll('.tile.selected').length;
+}
+function selectedArrayFromDOM(){
+  return Array.from(document.querySelectorAll('.tile.selected')).map(el => el.getAttribute('data-trait'));
+}
+function saveFromDOM(){
+  const arr = selectedArrayFromDOM();
+  localStorage.setItem('novaSelectedTraits', JSON.stringify(arr));
+}
+
+function updateUI(){
+  const n = selectedCountFromDOM();
+  countEl.textContent = String(n);
+  if(n >= MIN_TRAITS){
+    seeBtn.removeAttribute('disabled');
+    seeBtn.classList.remove('disabled');
+    seeBtn.setAttribute('aria-disabled','false');
+    seeBtn.style.pointerEvents = 'auto';
+  } else {
+    seeBtn.setAttribute('disabled','true');
+    seeBtn.classList.add('disabled');
+    seeBtn.setAttribute('aria-disabled','true');
   }
 }
-ensureFreshStart();
-loadSelections();
-reflectSelectionsToDOM();
-updateUI();
 
-// See results click
-seeBtn.addEventListener('click', (e)=>{
-  if(selected.size < MIN_TRAITS){ e.preventDefault(); return; }
-  // persist and go
-  saveSelections();
+// Results navigation
+seeBtn.addEventListener('click', (e) => {
+  if(selectedCountFromDOM() < MIN_TRAITS){
+    e.preventDefault();
+    return;
+  }
+  saveFromDOM();
   window.location.href = 'results.html';
 });
 
-// defensive overlay removal
-const maybeOverlay = document.querySelector('.overlay, .page-cover, .modal-backdrop');
-if(maybeOverlay) { maybeOverlay.style.pointerEvents = 'none'; maybeOverlay.style.opacity = '0'; }
+// Also handle bfcache restore -> re-evaluate UI
+window.addEventListener('pageshow', (e) => {
+  updateUI();
+});
 </script>
 </body></html>
