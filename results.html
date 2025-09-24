@@ -4,13 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOVA • Results</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
 </head>
-<body>
+<body data-page="results">
   <main class="wrap">
-    <h1>Results Snapshot</h1>
-    <p class="subtitle">Temporary placeholder page.</p>
-    <p><a class="btn primary" href="reflection.html">Go to Reflection</a></p>
+    <header class="center">
+      <h1>Your Results Snapshot</h1>
+      <p class="kicker">Here are the strengths you selected. We’ll suggest role areas that tend to fit these patterns.</p>
+    </header>
+
+    <section id="selectedOut" class="center" aria-live="polite"></section>
+
+    <hr class="sep" />
+
+    <section class="center">
+      <h3>Aligned Role Areas</h3>
+      <p id="rolesOut" class="kicker">Loading…</p>
+    </section>
+
+    <footer class="nav">
+      <a id="toReflection" class="btn" href="reflection.html">Continue</a>
+      <a class="btn secondary" href="traits.html">← Back</a>
+    </footer>
   </main>
 </body>
 </html>

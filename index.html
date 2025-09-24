@@ -4,10 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Welcome to NOVA</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
 </head>
-<body>
-  <main class="wrap" role="main" aria-labelledby="page-title">
+<body data-page="welcome">
+  <main class="wrap center" role="main" aria-labelledby="page-title">
     <header class="hero">
       <h1 id="page-title">Welcome to NOVA</h1>
       <p class="subtitle">
@@ -20,45 +21,27 @@
     </header>
 
     <section class="steps" aria-label="How it works">
-      <div class="step">
-        <div class="num">1)</div>
-        <div class="body">
-          <h3>Select traits</h3>
-          <p>Tap the cards that sound like you.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">2)</div>
-        <div class="body">
-          <h3>See results</h3>
-          <p>Get your trait‑based results and roles.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">3)</div>
-        <div class="body">
-          <h3>Reflect &amp; continue</h3>
-          <p>Choose your pathway and plan in NAVI.</p>
-        </div>
-      </div>
+      <div class="step"><div class="num">1)</div><div class="body"><h3>Select traits</h3><p>Tap the cards that sound like you.</p></div></div>
+      <div class="step"><div class="num">2)</div><div class="body"><h3>See results</h3><p>Get your trait‑based results and roles.</p></div></div>
+      <div class="step"><div class="num">3)</div><div class="body"><h3>Reflect &amp; continue</h3><p>Choose your pathway and plan in NAVI.</p></div></div>
     </section>
 
-    <div class="ctas">
-      <a class="btn primary" href="traits.html" id="beginNova">
-        Begin Your Journey with Nova
-      </a>
+    <div class="center">
+      <a class="btn" href="traits.html" id="beginNova">Begin Your Journey with Nova</a>
     </div>
 
+    <hr class="sep" />
+
     <section class="audio-block" aria-label="Optional audio welcome">
-      <p class="audio-caption">Optional audio welcome</p>
+      <p class="kicker">Optional audio welcome</p>
       <audio controls preload="metadata">
-        <source src="audio/nova-welcome.mp3" type="audio/mpeg" />
+        <source src="assets/nova-welcome.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </section>
 
-    <footer class="foot">
-      <p>Every step you’ve taken brought you here. Let’s begin.</p>
+    <footer class="center">
+      <p class="kicker" style="color:#87ceeb;">Every step you’ve taken brought you here. Let’s begin.</p>
     </footer>
   </main>
 </body>

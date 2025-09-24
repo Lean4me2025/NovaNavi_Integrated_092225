@@ -4,13 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOVA • Traits</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
 </head>
-<body>
+<body data-page="traits">
   <main class="wrap">
-    <h1>Trait Selection</h1>
-    <p class="subtitle">This is a temporary placeholder. Your 50-card trait grid will load here in the integrated build.</p>
-    <p><a class="btn primary" href="results.html">Continue (temporary)</a></p>
+    <header class="center">
+      <h1>Trait Selection</h1>
+      <p class="kicker">Select as many as apply. Your choices will be highlighted in bright green and saved automatically.</p>
+    </header>
+
+    <section class="traits-grid" aria-label="Traits grid"></section>
+
+    <div class="toolbar">
+      <span id="selectMeta" class="meta">0 selected</span>
+      <button id="clearTraits" class="clear-btn" type="button">Clear Selections</button>
+    </div>
+
+    <div class="next-row">
+      <a id="toResults" class="btn disabled" href="results.html" aria-disabled="true">See My Results</a>
+      <a class="btn secondary" href="index.html">← Back</a>
+    </div>
   </main>
 </body>
 </html>

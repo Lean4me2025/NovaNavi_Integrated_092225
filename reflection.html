@@ -4,13 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOVA • Reflection</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
 </head>
-<body>
+<body data-page="reflection">
   <main class="wrap">
-    <h1>Reflection</h1>
-    <p class="subtitle">Temporary placeholder page.</p>
-    <p><a class="btn primary" href="offers.html">See Plans</a></p>
+    <header class="center">
+      <h1>Where are you right now?</h1>
+      <p class="kicker">Choose the statement that fits you best — this helps Navi guide your next step.</p>
+    </header>
+
+    <section class="options" aria-label="Reflection options">
+      <div class="option"><strong>I’m just starting.</strong><br><span class="kicker">I’m exploring purpose and possibilities.</span></div>
+      <div class="option"><strong>I’m switching lanes.</strong><br><span class="kicker">I want to pivot into better-aligned work.</span></div>
+      <div class="option"><strong>I’m leveling up.</strong><br><span class="kicker">I’m ready to advance in my field.</span></div>
+      <div class="option"><strong>I’m ready to launch.</strong><br><span class="kicker">I want tools, training, and a plan.</span></div>
+    </section>
+
+    <footer class="nav">
+      <a id="saveContinue" class="btn disabled" href="offers.html" aria-disabled="true">Save & Continue</a>
+      <a class="btn secondary" href="results.html">← Back</a>
+    </footer>
   </main>
 </body>
 </html>
