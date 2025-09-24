@@ -1,32 +1,71 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NOVA • Results</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-  <script defer src="assets/app.js"></script>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NOVA • Results</title>
+<style>
+:root{
+  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
+}
+.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#111}
+.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
+.small{font-size:.95rem;opacity:.9}
+.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
+a{color:var(--accent)}
+
+.list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:1rem}
+.badge{padding:.5rem .75rem;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid #ffffff10}
+</style>
 </head>
-<body data-page="results">
-  <main class="wrap">
-    <header class="center">
-      <h1>Your Results Snapshot</h1>
-      <p class="kicker">Here are the strengths you selected. We’ll suggest role areas that tend to fit these patterns.</p>
-    </header>
-
-    <section id="selectedOut" class="center" aria-live="polite"></section>
-
-    <hr class="sep" />
-
-    <section class="center">
-      <h3>Aligned Role Areas</h3>
-      <p id="rolesOut" class="kicker">Loading…</p>
+<body>
+  <div class="wrap">
+    <header class="header"><div><strong>Your Results</strong></div><nav><a href="traits.html">Back to Traits</a></nav></header>
+    <section class="card">
+      <h2>Your Selected Traits</h2>
+      <div id="traitList" class="list small"></div>
+      <div style="margin-top:1rem;">
+        <button id="reflectBtn" class="btn primary">Reflect →</button>
+        <button id="backBtn" class="btn ghost">Back</button>
+      </div>
     </section>
+  </div>
+<script>
+const traitDiv = document.getElementById('traitList');
+const reflectBtn = document.getElementById('reflectBtn');
+const backBtn = document.getElementById('backBtn');
 
-    <footer class="nav">
-      <a id="toReflection" class="btn" href="reflection.html">Continue</a>
-      <a class="btn secondary" href="traits.html">← Back</a>
-    </footer>
-  </main>
-</body>
-</html>
+function loadSelected(){
+  const raw = localStorage.getItem('novaSelectedTraits');
+  if(!raw) return [];
+  try{ return JSON.parse(raw); }catch(e){ return []; }
+}
+function render(){
+  const arr = loadSelected();
+  traitDiv.innerHTML = '';
+  if(arr.length===0){ traitDiv.innerHTML='<div class="small">No selections found. Return to Traits to pick.</div>'; reflectBtn.disabled=true; }
+  else {
+    arr.forEach(t=>{
+      const d=document.createElement('div'); d.className='badge'; d.textContent=t; traitDiv.appendChild(d);
+    });
+    reflectBtn.disabled=false;
+  }
+}
+render();
+
+reflectBtn.addEventListener('click', ()=> {
+  // save snapshot for potential use
+  const arr = loadSelected();
+  localStorage.setItem('novaSnapshot', JSON.stringify({traits:arr, date:new Date().toISOString()}));
+  window.location.href = 'reflection.html';
+});
+backBtn.addEventListener('click', ()=> window.location.href='traits.html');
+</script>
+</body></html>

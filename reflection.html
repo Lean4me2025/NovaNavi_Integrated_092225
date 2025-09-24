@@ -1,30 +1,55 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NOVA • Reflection</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-  <script defer src="assets/app.js"></script>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NOVA • Reflection</title>
+<style>
+:root{
+  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
+}
+.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#111}
+.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
+.small{font-size:.95rem;opacity:.9}
+.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
+a{color:var(--accent)}
+
+textarea{width:100%;min-height:160px;border-radius:8px;padding:10px;border:1px solid #ffffff22;background:transparent;color:var(--text)}
+</style>
 </head>
-<body data-page="reflection">
-  <main class="wrap">
-    <header class="center">
-      <h1>Where are you right now?</h1>
-      <p class="kicker">Choose the statement that fits you best — this helps Navi guide your next step.</p>
-    </header>
-
-    <section class="options" aria-label="Reflection options">
-      <div class="option"><strong>I’m just starting.</strong><br><span class="kicker">I’m exploring purpose and possibilities.</span></div>
-      <div class="option"><strong>I’m switching lanes.</strong><br><span class="kicker">I want to pivot into better-aligned work.</span></div>
-      <div class="option"><strong>I’m leveling up.</strong><br><span class="kicker">I’m ready to advance in my field.</span></div>
-      <div class="option"><strong>I’m ready to launch.</strong><br><span class="kicker">I want tools, training, and a plan.</span></div>
+<body>
+  <div class="wrap">
+    <header class="header"><div><strong>Reflection</strong></div><nav><a href="results.html">Back</a></nav></header>
+    <section class="card">
+      <h2>Reflect on your results</h2>
+      <p class="small">Write a short reflection to capture your insights—this saves locally and can be included in your Snapshot PDF later.</p>
+      <textarea id="reflection" placeholder="What surprised you? What action will you take this week?"></textarea>
+      <div style="margin-top:1rem;">
+        <button id="saveBtn" class="btn primary">Save & Continue → Offers</button>
+        <button id="backBtn" class="btn ghost">Back</button>
+      </div>
     </section>
+  </div>
+<script>
+const saveBtn = document.getElementById('saveBtn');
+const backBtn = document.getElementById('backBtn');
+const area = document.getElementById('reflection');
 
-    <footer class="nav">
-      <a id="saveContinue" class="btn disabled" href="offers.html" aria-disabled="true">Save & Continue</a>
-      <a class="btn secondary" href="results.html">← Back</a>
-    </footer>
-  </main>
-</body>
-</html>
+backBtn.addEventListener('click', ()=> window.location.href='results.html');
+
+saveBtn.addEventListener('click', ()=> {
+  localStorage.setItem('novaReflection', area.value || '');
+  // simulate generation of a result blob
+  const blob = {date:new Date().toISOString(), reflection: area.value || ''};
+  localStorage.setItem('novaResultBlob', JSON.stringify(blob));
+  window.location.href = 'offers.html';
+});
+</script>
+</body></html>

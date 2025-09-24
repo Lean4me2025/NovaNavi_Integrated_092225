@@ -1,102 +1,57 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NOVA • Choose Your Path</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-  <script src="https://payhip.com/payhip.js"></script>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NOVA • Offers</title>
+<style>
+:root{
+  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
+}
+.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#111}
+.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
+.small{font-size:.95rem;opacity:.9}
+.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
+a{color:var(--accent)}
+
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1rem}
+.product{padding:12px;border-radius:10px;border:1px solid #ffffff12}
+.product h3{}
+.buy{margin-top:8px}
+</style>
 </head>
-<body data-page="offers">
-  <main class="wrap">
-    <header class="center">
-      <h1>Choose Your Path</h1>
-      <p class="kicker">Each plan builds on the last — pick what fits your next step.</p>
-    </header>
+<body>
+  <div class="wrap">
+    <header class="header"><div><strong>Choose Your Path</strong></div><nav><a href="reflection.html">Back</a></nav></header>
 
-    <section class="offer-grid" aria-label="Plans">
-      <!-- Starter -->
-      <article class="card plan">
-        <header>
-          <h3>Starter</h3>
-          <div class="price">$29.99<span>/mo</span></div>
-        </header>
-        <ul class="features">
-          <li>Nova 50-trait discovery + PDF</li>
-          <li>Basic resume builder</li>
-          <li>Standard cover-letter generator</li>
-          <li>Role matches aligned to your traits</li>
-          <li>1 Pro document preview / month</li>
-          <li>Navi’s Golden Nugget newsletter</li>
-        </ul>
-        <a href="https://payhip.com/b/GdfU7"
-           class="payhip-buy-button"
-           data-theme="green"
-           data-product="GdfU7">Get Starter</a>
-      </article>
+    <section class="card">
+      <h2>Offers</h2>
+      <p class="small">Choose a plan to proceed. PayHip embed buttons are included as static placeholders — replace product IDs with your actual PayHip product codes.</p>
 
-      <!-- Pro -->
-      <article class="card plan highlight">
-        <header>
-          <h3>Pro</h3>
-          <div class="price">$99<span>/mo</span></div>
-          <p class="badge">Most Popular</p>
-        </header>
-        <ul class="features">
-          <li><strong>Everything in Starter</strong></li>
-          <li>Resume <strong>rewrite</strong> AI</li>
-          <li><strong>Unlimited</strong> tailored cover letters</li>
-          <li>Company intelligence reports</li>
-          <li>Advanced job filters + saved searches & alerts</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="https://payhip.com/b/re4Hy"
-           class="payhip-buy-button"
-           data-theme="green"
-           data-product="re4Hy">Upgrade to Pro</a>
-      </article>
-
-      <!-- Mastery -->
-      <article class="card plan">
-        <header>
-          <h3>Mastery</h3>
-          <div class="price">$149<span>/mo</span></div>
-        </header>
-        <ul class="features">
-          <li><strong>Everything in Pro</strong></li>
-          <li>Personal Career Roadmap (PDF)</li>
-          <li>Extended document library & templates</li>
-          <li><strong>Digital Training Access</strong> (curated modules)</li>
-          <li>Early access to new features</li>
-          <li>Quarterly masterclass / webinar invite</li>
-        </ul>
-        <a href="https://payhip.com/b/MASTERID"
-           class="payhip-buy-button"
-           data-theme="green"
-           data-product="MASTERID">Go Mastery</a>
-      </article>
-
-      <!-- Purpose Book -->
-      <article class="card plan">
-        <header>
-          <h3>Purpose Book</h3>
-          <div class="price">One-time</div>
-        </header>
-        <ul class="features">
-          <li>Step-by-step guide to clarify purpose</li>
-          <li>Exercises, prompts, and examples</li>
-          <li>Instant download</li>
-        </ul>
-        <a href="https://payhip.com/b/BOOKID"
-           class="payhip-buy-button"
-           data-theme="green"
-           data-product="BOOKID">Get the Book</a>
-      </article>
+      <div class="products">
+        <div class="product">
+          <h3>Starter — $29.99/mo</h3>
+          <p class="small">NOVA 50-trait discovery + PDF, basic resume builder.</p>
+          <div class="buy"><a class="btn primary" href="payments.html?product=starter">Buy Starter</a></div>
+        </div>
+        <div class="product">
+          <h3>Pro — $99/mo</h3>
+          <p class="small">Resume rewrite, unlimited covers, company reports.</p>
+          <div class="buy"><a class="btn primary" href="payments.html?product=pro">Buy Pro</a></div>
+        </div>
+        <div class="product">
+          <h3>Mastery — $149/mo</h3>
+          <p class="small">1:1 coaching, roadmap PDF, extended library.</p>
+          <div class="buy"><a class="btn primary" href="payments.html?product=mastery">Buy Mastery</a></div>
+        </div>
+      </div>
     </section>
-
-    <footer class="nav">
-      <a class="btn secondary" href="reflection.html">← Back</a>
-    </footer>
-  </main>
-</body>
-</html>
+  </div>
+</body></html>

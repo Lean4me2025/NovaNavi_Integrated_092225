@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NOVA • Payments</title>
+<style>
+:root{
+  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
+}
+.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#111}
+.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
+.small{font-size:.95rem;opacity:.9}
+.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
+a{color:var(--accent)}
+
+.col{display:flex;gap:12px;align-items:flex-start}
+.block{flex:1}
+.note{opacity:.9}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header"><div><strong>Payments</strong></div><nav><a href="offers.html">Back</a></nav></header>
+    <section class="card">
+      <h2>Payment integration (PayHip placeholders)</h2>
+      <p class="small">This page shows static placeholders for PayHip embeds. Replace the anchors below with PayHip embed code or keep as links to PayHip checkout pages.</p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:1rem;">
+        <div class="card block">
+          <h3>Checkout — Starter</h3>
+          <p class="note">Replace with PayHip buy button using data-product="StarterProductID"</p>
+          <a class="btn primary" href="#">PayHip Buy (Starter)</a>
+        </div>
+        <div class="card block">
+          <h3>Checkout — Pro</h3>
+          <p class="note">Replace with PayHip buy button using data-product="ProProductID"</p>
+          <a class="btn primary" href="#">PayHip Buy (Pro)</a>
+        </div>
+        <div class="card block">
+          <h3>Checkout — Mastery</h3>
+          <p class="note">Replace with PayHip buy button using data-product="MasteryProductID"</p>
+          <a class="btn primary" href="#">PayHip Buy (Mastery)</a>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <button id="confirm" class="btn primary">Confirm Purchase (simulate)</button>
+      </div>
+    </section>
+  </div>
+
+<script>
+document.getElementById('confirm').addEventListener('click', ()=> {
+  alert('Simulated purchase complete. In production this will redirect to PayHip or process payment.');
+  localStorage.setItem('novaPurchaseCompleted','true');
+  window.location.href = 'index.html';
+});
+</script>
+</body></html>

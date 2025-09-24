@@ -1,52 +1,44 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NAVI • Settings</title>
-  <style>
-    :root{
-      --bg:#081B33;
-      --panel:#0B2347cc;
-      --accent:#FDBA21;
-      --text:#ffffff;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%);
-      color:var(--text);
-    }
-    .wrap{max-width:820px;margin:4rem auto;padding:0 1rem}
-    .card{background:var(--panel);border-radius:16px;padding:2rem;box-shadow:0 10px 35px rgba(0,0,0,.25)}
-    h2{margin:.25rem 0 1rem}
-    label.toggle{display:flex;gap:.65rem;align-items:center;font-size:1.1rem;margin:.5rem 0}
-    input[type="checkbox"]{width:1.2rem;height:1.2rem}
-    .note{opacity:.85;margin-top:1rem}
-    a{color:var(--accent);text-decoration:none}
-  </style>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NAVI • Settings</title>
+<style>
+:root{
+  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
+}
+.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
+.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#111}
+.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
+.small{font-size:.95rem;opacity:.9}
+.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
+a{color:var(--accent)}
+
+label{display:flex;gap:.6rem;align-items:center}
+</style>
 </head>
 <body>
-  <main class="wrap">
+  <div class="wrap">
+    <header class="header"><div><strong>Settings</strong></div><nav><a href="navi-dashboard.html">Dashboard</a></nav></header>
     <section class="card">
       <h2>Settings</h2>
-      <label class="toggle">
-        <input type="checkbox" id="trackerToggle">
-        <span><strong>Enable Progress Tracker</strong></span>
-      </label>
-      <p class="note">Changes are saved to this device. Return to the <a href="navi-dashboard.html">Dashboard</a>.</p>
+      <label><input type="checkbox" id="trackerToggle"/> <span>Enable Progress Tracker</span></label>
+      <p class="small">Change saved to this device. Progress Tracker and other optional features can be toggled here.</p>
+      <div style="margin-top:1rem;"><a href="index.html" class="btn ghost">Back Home</a></div>
     </section>
-  </main>
-  <script>
-    const box = document.getElementById('trackerToggle');
-    const sync = () => box.checked = localStorage.getItem('naviProgressEnabled') === 'true';
-    sync();
-    box.addEventListener('change', () => {
-      localStorage.setItem('naviProgressEnabled', box.checked ? 'true' : 'false');
-      alert('Saved. Your dashboard will reflect this change.');
-    });
-  </script>
-</body>
-</html>
+  </div>
+
+<script>
+const box = document.getElementById('trackerToggle');
+function sync(){ box.checked = localStorage.getItem('naviProgressEnabled') === 'true'; }
+sync();
+box.addEventListener('change', ()=> { localStorage.setItem('naviProgressEnabled', box.checked ? 'true' : 'false'); alert('Saved.'); });
+</script>
+</body></html>
