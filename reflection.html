@@ -1,51 +1,16 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Reflection | Nova</title>
-<link rel="stylesheet" href="/assets/styles.css"/>
-<script>window.NOVA={};</script>
-</head><body>
-<nav class="nav">
-  <a class="navlink " href="/index.html">Home</a>
-  <a class="navlink " href="/traits.html">Discover (NOVA)</a>
-  <a class="navlink " href="/snapshot.html">My Snapshot</a>
-  <a class="navlink active" href="/reflection.html">Reflect</a>
-  <a class="navlink " href="/offers.html">Plans</a>
-</nav>
-<div class="container">
-<section class="card">
-  <h2 style="margin-top:0">Where are you today?</h2>
-  <p class="small">Choose the statement that best describes your current situation.</p>
-  <div class="stack" id="refl-list"></div>
-  <div class="footer-cta" style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
-    <a class="btn" href="/results.html">Back</a>
-    <a class="btn btn-primary" id="to-offers" aria-disabled="true">Save & Continue</a>
-  </div>
-</section>
-<script>
-const items = [
-  {value:'just-starting', title:"I'm just starting to explore.", desc:'You are in discovery mode, curious about where your strengths might lead. This stage is about opening doors and testing possibilities.'},
-  {value:'changing', title:"I'm changing careers or re-entering.", desc:'You are in a season of transition, ready to apply your strengths in a new role—or return with fresh perspective.'},
-  {value:'growing', title:"I'm in my lane and want to grow.", desc:'You have found your footing, and now you want to stretch, refine, and expand your impact where you are.'},
-  {value:'leading', title:"I'm leading and want to scale impact.", desc:'You are influencing others already, and your focus is on multiplying that impact and building legacy.'}
-];
-const list = document.getElementById('refl-list');
-let chosen=null;
-items.forEach(it=>{
-  const row=document.createElement('label');
-  row.className='option-card';
-  row.innerHTML = `<input type="radio" name="refl" value="${it.value}"/> <div><div style="font-weight:700">${it.title}</div><div class="small">${it.desc}</div></div>`;
-  row.querySelector('input').addEventListener('change', e=>{
-    chosen = e.target.value;
-    document.querySelectorAll('.option-card').forEach(c=>c.classList.remove('is-selected'));
-    row.classList.add('is-selected');
-    document.getElementById('to-offers').removeAttribute('aria-disabled');
-  });
-  list.appendChild(row);
-});
-document.getElementById('to-offers').addEventListener('click',()=>{
-  if(!chosen) return;
-  localStorage.setItem('navi_stage', chosen);
-  location.href='/offers.html';
-});
-</script>
-</div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOVA • Reflection</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Reflection</h1>
+    <p class="subtitle">Temporary placeholder page.</p>
+    <p><a class="btn primary" href="offers.html">See Plans</a></p>
+  </main>
+</body>
+</html>

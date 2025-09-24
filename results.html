@@ -1,47 +1,16 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Results | Nova</title>
-<link rel="stylesheet" href="/assets/styles.css"/>
-<script>window.NOVA={};</script>
-</head><body>
-<nav class="nav">
-  <a class="navlink " href="/index.html">Home</a>
-  <a class="navlink " href="/traits.html">Discover (NOVA)</a>
-  <a class="navlink " href="/snapshot.html">My Snapshot</a>
-  <a class="navlink " href="/reflection.html">Reflect</a>
-  <a class="navlink " href="/offers.html">Plans</a>
-</nav>
-<div class="container">
-<section class="card">
-  <h2 style="margin-top:0">Your Snapshot</h2>
-  <p class="small">These results synthesize your selected traits with skills and requirements from 400+ career paths to surface roles where your strengths naturally align.</p>
-  <hr class="sep"/>
-  <div class="grid cols-2">
-    <div>
-      <h3>Selected Traits</h3>
-      <ul id="sel-traits"></ul>
-    </div>
-    <div>
-      <h3>Aligned Roles (sample)</h3>
-      <ul id="roles"></ul>
-      <p class="small">This is a preview list. Go to NAVI to turn these into résumés, applications, and a step-by-step plan.</p>
-    </div>
-  </div>
-  <div class="footer-cta" style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
-    <a class="btn" href="/traits.html">Edit Traits</a>
-    <a class="btn btn-primary" href="/reflection.html">Continue</a>
-  </div>
-</section>
-<script>
-Promise.all([
-  fetch('/data/roles.json').then(r=>r.json())
-]).then(([CATALOG])=>{
-  const picks = JSON.parse(localStorage.getItem('nova_traits')||'[]');
-  document.getElementById('sel-traits').innerHTML = picks.length ? picks.map(t=>`<li>${t}</li>`).join('') : '<li><em>No traits selected yet.</em></li>';
-  const rolesSet = new Set();
-  picks.forEach(t => (CATALOG[t]||[]).forEach(r => rolesSet.add(r)));
-  const roles = [...rolesSet].slice(0,8);
-  document.getElementById('roles').innerHTML = roles.length ? roles.map(r=>`<li>${r}</li>`).join('') : '<li>Pick a few traits to generate role ideas.</li>';
-});
-</script>
-</div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOVA • Results</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Results Snapshot</h1>
+    <p class="subtitle">Temporary placeholder page.</p>
+    <p><a class="btn primary" href="reflection.html">Go to Reflection</a></p>
+  </main>
+</body>
+</html>
