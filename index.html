@@ -1,55 +1,66 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>NOVA • NAVI • Welcome</title>
+<title>NOVA • Welcome</title>
 <style>
-:root{
-  --bg:#081B33; --panel:#0B2347cc; --panel2:#0F2B57; --accent:#FDBA21; --text:#fff;
-}
+:root{ --bg:#081B33; --panel:#0B2347cc; --accent:#FDBA21; --text:#fff; }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{
-  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text);
-}
+body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text); }
 .wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
-.card{background:var(--panel);border-radius:14px;padding:1.25rem;margin:1rem 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:var(--panel);border-radius:16px;padding:2rem;box-shadow:0 10px 35px rgba(0,0,0,.25)}
 .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.btn{padding:.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+a{color:var(--accent);text-decoration:none}
+.btn{padding:.8rem 1.15rem;border-radius:12px;border:0;cursor:pointer;font-weight:800}
 .btn.primary{background:var(--accent);color:#111}
 .btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
-.small{font-size:.95rem;opacity:.9}
-.footer{margin-top:2rem;opacity:.8;font-size:.9rem}
-a{color:var(--accent)}
-
-.hero{padding:2rem;border-radius:16px}
-.actions{display:flex;gap:12px;margin-top:1rem}
-.note{opacity:.85;margin-top:.75rem;font-size:.95rem}
+.hero h1{margin:.2rem 0 .4rem;font-size:2rem}
+.sub{opacity:.9}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1rem}
+.box{padding:1rem;border-radius:12px;border:1px solid #ffffff22}
+.stat{font-weight:900;font-size:1.2rem;margin-top:.5rem}
+.footer{margin-top:1rem;opacity:.75;font-size:.95rem}
 </style>
 </head>
 <body>
   <div class="wrap">
     <header class="header">
-      <div><strong>NOVA • NAVI</strong></div>
+      <div><strong>NOVA</strong></div>
       <nav><a href="navi-dashboard.html">Dashboard</a> • <a href="navi-settings.html">Settings</a></nav>
     </header>
 
     <section class="card hero">
-      <h1>Welcome to NAVI</h1>
-      <p class="small">Jump into your Progress Tracker to start logging momentum — or skip it for now. You can turn it on anytime in Settings.</p>
-
-      <div style="margin-top:1rem;">
-        <label style="display:flex;gap:.6rem;align-items:center;"><input type="checkbox" id="progressOpt"/> <span class="small">Enable Progress Tracker</span></label>
+      <h1>Discover your purpose</h1>
+      <p class="sub">Answer a quick set of trait prompts. Get aligned roles and a clear next step.</p>
+      <div style="margin:.75rem 0 1rem;">
+        <button id="startBtn" class="btn primary">Start with NOVA →</button>
       </div>
 
-      <div class="actions">
-        <button id="startBtn" class="btn primary">Start NOVA → Traits</button>
-        <button id="laterBtn" class="btn ghost">Not now</button>
+      <div class="grid">
+        <div class="box">
+          <strong>What you’ll get</strong>
+          <ul>
+            <li>Your top traits (5+)</li>
+            <li>Aligned roles &amp; training paths</li>
+            <li>Snapshot you can save</li>
+          </ul>
+        </div>
+        <div class="box">
+          <strong>How it works</strong>
+          <ul>
+            <li>Pick at least 5 traits</li>
+            <li>Reflect on your results</li>
+            <li>Choose a plan to go further</li>
+          </ul>
+        </div>
+        <div class="box">
+          <strong>Did you know?</strong>
+          <div class="stat">• 89% of people don’t know or operate in their purpose.</div>
+        </div>
       </div>
 
-      <p class="note">Starting NOVA clears previous trait selections to ensure a fresh run. This helps keep results accurate.</p>
+      <div class="footer">Flow: Welcome → Traits → Results → Reflection → Offers → Payments.</div>
     </section>
-
-    <div class="footer card small">Integrated build: Welcome → Traits → Results → Reflection → Offers → Payments. All features in one package.</div>
   </div>
 
 <script>
@@ -58,16 +69,7 @@ function novaHardReset(){
   KEYS.forEach(k=>localStorage.removeItem(k));
   sessionStorage.removeItem('traitsResetThisVisit');
 }
-// wire buttons
 document.getElementById('startBtn').addEventListener('click', () => {
-  const on = document.getElementById('progressOpt').checked;
-  localStorage.setItem('naviProgressEnabled', on ? 'true' : 'false');
-  // hard reset trait state
-  novaHardReset();
-  window.location.href = 'traits.html';
-});
-document.getElementById('laterBtn').addEventListener('click', ()=> {
-  localStorage.setItem('naviProgressEnabled','false');
   novaHardReset();
   window.location.href = 'traits.html';
 });
