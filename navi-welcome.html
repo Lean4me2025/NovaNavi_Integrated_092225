@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NAVI • Welcome</title>
+  <style>
+    :root{
+      --bg:#081B33;
+      --panel:#0B2347cc;
+      --panel2:#0f2b57;
+      --accent:#FDBA21;
+      --text:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%);
+      color:var(--text);
+    }
+    .wrap{max-width:920px;margin:6rem auto;padding:0 1rem}
+    .card{
+      background:var(--panel);
+      border-radius:16px;
+      padding:2rem 2rem 1.5rem;
+      box-shadow:0 10px 35px rgba(0,0,0,.25);
+      backdrop-filter:saturate(140%) blur(2px);
+    }
+    h1{margin:.25rem 0 1rem;font-weight:800;letter-spacing:.2px}
+    p{line-height:1.55}
+    .actions{display:flex;gap:12px;margin-top:1rem;flex-wrap:wrap}
+    .btn{padding:.85rem 1.15rem;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:#111}
+    .btn.ghost{background:transparent;outline:1px solid #fff;color:#fff}
+    .note{opacity:.85;margin-top:.75rem;font-size:.95rem}
+    .brand{opacity:.85;font-weight:700;margin-bottom:.25rem}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="brand">Welcome to NAVI</div>
+      <h1>Choose if you want the Progress Tracker</h1>
+      <p>The <strong>Progress Tracker</strong> helps you log momentum—applications, learning sessions, interviews, and weekly wins. 
+      You can turn it on now or enable it later from <em>Settings</em>.</p>
+      <div class="actions">
+        <button id="enableBtn" class="btn primary">Enable Tracker</button>
+        <button id="skipBtn" class="btn ghost">Not now</button>
+      </div>
+      <p class="note">This choice only affects your device (saved locally). You can change it anytime.</p>
+    </section>
+  </main>
+  <script>
+    const goToDashboard = () => window.location.href = "navi-dashboard.html";
+    document.getElementById("enableBtn").onclick = () => {
+      localStorage.setItem("naviProgressEnabled","true");
+      goToDashboard();
+    };
+    document.getElementById("skipBtn").onclick = () => {
+      localStorage.setItem("naviProgressEnabled","false");
+      goToDashboard();
+    };
+  </script>
+</body>
+</html>

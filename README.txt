@@ -1,18 +1,23 @@
-NOVA + NAVI Integrated Flow — v2 (Cache-Busting + 50 Traits Guaranteed)
-------------------------------------------------------------------------
-Sequence:
-1) index.html
-2) traits.html  (renders ALL 50 strengths; count shown in page text)
-3) results.html (shows how many were selected; confirms total available = 50)
-4) reflection.html (Save & Continue unlocks on selection)
-5) offers.html (2x2 grid, green Payhip buttons: GdfU7, knC1Z, re4Hy, N7Lvg)
-6) navi.html
+# NAVI Progress Tracker (Optional) — Bundle
 
-Built-in fixes:
-- Cache-busting meta headers on every page to prevent stale assets.
-- CSS grid tuned for 4/3/2 columns responsive; no max-height clipping.
-- Traits hardcoded (50 labels) — guaranteed render with no external data.
+This bundle implements an **opt‑in** Progress Tracker for NAVI. Users choose on first launch whether to enable it. The choice is saved locally and can be toggled later in **Settings**.
 
-Deploy:
-- Upload ZIP to your repo, deploy on Vercel.
-- If you still see fewer than 50 traits, hard refresh (Cmd+Shift+R) once.
+## Files
+- `navi-welcome.html` — asks the user to enable the tracker (Enable / Not now)
+- `navi-dashboard.html` — conditionally shows the tracker module; includes an "Enable Now" card when disabled
+- `navi-settings.html` — toggle to enable/disable anytime
+
+## Integrate
+1. Place these files in your NAVI app root (or your `navi/` subfolder).
+2. Link your router/navigation so **Welcome → Dashboard → Settings** flow is reachable:
+   - Start at `navi-welcome.html`
+   - Dashboard route is `navi-dashboard.html`
+   - Settings route is `navi-settings.html`
+3. If you already have a dashboard shell, move the conditional block from `navi-dashboard.html` (the `#trackerMount` section) into your existing layout.
+4. Styling uses a dark blue theme and gold accent to match your brand. All styles are inline for simple drop-in; you can extract to your global CSS as needed.
+
+## Data
+- The flag is stored at `localStorage.naviProgressEnabled` with values `"true"` or `"false"`.
+- No network calls — purely client-side; safe to test on Vercel static hosting.
+
+— Prepared for Drew • 2025-09-23
