@@ -1,40 +1,64 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Welcome | Nova + Navi</title>
-<link rel="stylesheet" href="/assets/styles.css"/>
-<script>window.NOVA={};</script>
-</head><body>
-<nav class="nav">
-  <a class="navlink active" href="/index.html">Home</a>
-  <a class="navlink " href="/traits.html?reset=1">Discover (NOVA)</a>
-  <a class="navlink " href="/snapshot.html">My Snapshot</a>
-  <a class="navlink " href="/reflection.html">Reflect</a>
-  <a class="navlink " href="/offers.html">Plans</a>
-</nav>
-<div class="container">
-<section class="hero">
-  <h1 class="welcome-title">Welcome</h1>
-  <p class="eyebrow"><strong>Did you know?</strong> An estimated <strong>89%</strong> of people do not know or operate in their purpose.</p>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="/traits.html?reset=1" id="cta-start-nova">Start with NOVA</a>
-    <a class="btn btn-ghost" href="/offers.html" id="cta-see-plans">See Plans</a>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to NOVA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap" role="main" aria-labelledby="page-title">
+    <header class="hero">
+      <h1 id="page-title">Welcome to NOVA</h1>
+      <p class="subtitle">
+        First discover your core traits. Then reflect on where you are. Finally, step into NAVI to apply your purpose.
+      </p>
+    </header>
 
-  <div class="stack">
-    <div class="card">
-      <div class="kicker small">Phase 1 — Who You Are (NOVA)</div>
-      <h2 class="phase-title">Choose traits. See roles aligned to your strengths.</h2>
-      <p class="small">Nova guides you through selecting the traits that describe you, and reveals career paths where your strengths naturally fit.</p>
+    <section class="steps" aria-label="How it works">
+      <div class="step">
+        <div class="num">1)</div>
+        <div class="body">
+          <h3>Select traits</h3>
+          <p>Tap the cards that sound like you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2)</div>
+        <div class="body">
+          <h3>See results</h3>
+          <p>Get your trait‑based results and roles.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3)</div>
+        <div class="body">
+          <h3>Reflect &amp; continue</h3>
+          <p>Choose your pathway and plan in NAVI.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ctas">
+      <a class="btn primary" href="traits.html" id="beginNova" aria-label="Begin your journey with NOVA">
+        Begin Your Journey with Nova
+      </a>
     </div>
-    <div class="card">
-      <div class="kicker small">Phase 2 — Where You’re Going (NAVI)</div>
-      <h2 class="phase-title">Turn results into résumés, applications, and next steps.</h2>
-      <ul class="small">
-        <li>Résumés & cover letters that highlight your strengths</li>
-        <li>Career roles aligned with your attributes (from skills & requirements of 400+ career paths)</li>
-        <li>Training & steps to help you grow into your purpose</li>
-      </ul>
-    </div>
-  </div>
-</section>
-</div></body></html>
+
+    <section class="audio-block" aria-label="Optional audio welcome">
+      <p class="audio-caption">Optional audio welcome</p>
+      <audio controls preload="metadata">
+        <!-- Replace src with your final audio file when ready -->
+        <source src="audio/nova-welcome.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <footer class="foot">
+      <p>Every step you’ve taken brought you here. Let’s begin.</p>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
