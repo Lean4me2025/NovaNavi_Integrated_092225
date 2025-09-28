@@ -1,29 +1,42 @@
-# NOVA + NAVI (Integrated SPA)
-Unified single‑page app combining NOVA (trait discovery) and NAVI (resume/letter + role suggestions).
+# NOVA + NAVI • Full Flow v1.5
 
-## Quick Start
-1. Drag this folder into a GitHub repo (e.g., `NovaNavi_Integrated`).
-2. Deploy on **Vercel** or **Netlify** as a static site (no build step needed).
-3. Open the site and navigate:
-   - `#/nova` to select traits (50 available; search + multi-select).
-   - `#/result` to see your NOVA snapshot.
-   - `#/navi` to draft resume/cover letter and view role suggestions.
-   - `#/plans` to show Payhip embeds (Starter, Pro Suite pre‑wired; others placeholders).
+**Build time:** 2025-09-28T15:28:18
 
-## Payhip IDs
-- Starter: `GdfU7` ✅
-- Pro Suite: `re4Hy` ✅
-- Purpose Book: `REPLACE_BOOK_ID` (update both href and data-product)
-- Mastery: `REPLACE_MASTERY_ID` (update both href and data-product)
+An integrated, single-upload bundle for NOVA → NAVI:
 
-## Customize
-- Edit `data/traits.json` to adjust trait list (keep 50+ entries).
-- Edit `data/roles.json` to tune role suggestions and signals.
-- Update colors in `styles.css` under `:root`.
+Flow: **Welcome → Category → Traits → Results → Reflection → Plan → NAVI**
+
+## Files
+- `index.html` — App shell & screens
+- `styles.css` — Dark theme + components
+- `app.js` — Router, state, sample logic, Payhip activation
+
+## Payhip Buttons
+Already wired:
+- **Purpose Book**: `N7Lvg`
+- **Mastery (NAVI Pro Suite)**: `re4Hy`
+
+To activate the other plans, open `app.js` and set:
+```js
+const PAYHIP_IDS = {
+  BOOK: "N7Lvg",
+  STARTER: "YOUR_STARTER_ID",
+  PRO: "YOUR_PRO_ID",
+  MASTERY: "re4Hy"
+};
+```
+Then deploy — buttons upgrade automatically.
+
+## Optional Breadcrumb
+A breadcrumb bar is included but **hidden by default**. To enable, remove the `hidden` class on `<nav id="breadcrumb">` or toggle it in JS, and call:
+```js
+// Example: set current step
+// document.getElementById('breadcrumb').classList.remove('hidden');
+// goTo('category');
+```
 
 ## Notes
-- SPA uses **hash routing**. No backend required.
-- All selections live in memory (`app.js` state). Hook to a backend later if desired.
-- Tested for modern evergreen browsers.
-
-© 2025 NOVA + NAVI
+- Trait grid = 50 items (styled, selectable, with a max of 10).
+- State is persisted in `localStorage` so **Resume** link works.
+- Screens are pure front-end — no server needed.
+- Replace the sample result logic in `computeResults()` with your category→role mapping when ready.

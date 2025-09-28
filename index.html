@@ -1,77 +1,159 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>NOVA • Welcome</title>
-<style>
-:root{ --bg:#081B33; --panel:#0B2347cc; --accent:#FDBA21; --text:#fff; }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1000px 600px at 20% 0%, #0e3269 0%, var(--bg) 55%); color:var(--text); }
-.wrap{max-width:1100px;margin:2.5rem auto;padding:0 1rem}
-.card{background:var(--panel);border-radius:16px;padding:2rem;box-shadow:0 10px 35px rgba(0,0,0,.25)}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-a{color:var(--accent);text-decoration:none}
-.btn{padding:.8rem 1.15rem;border-radius:12px;border:0;cursor:pointer;font-weight:800}
-.btn.primary{background:var(--accent);color:#111}
-.btn.ghost{background:transparent;border:1px solid #ffffff55;color:#fff}
-.hero h1{margin:.2rem 0 .4rem;font-size:2rem}
-.sub{opacity:.9}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1rem}
-.box{padding:1rem;border-radius:12px;border:1px solid #ffffff22}
-.stat{font-weight:900;font-size:1.2rem;margin-top:.5rem}
-.footer{margin-top:1rem;opacity:.75;font-size:.95rem}
-</style>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOVA + NAVI • Full Flow v1.5</title>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header class="header">
-      <div><strong>NOVA</strong></div>
-      <nav><a href="navi-dashboard.html">Dashboard</a> • <a href="navi-settings.html">Settings</a></nav>
-    </header>
+  <!-- Optional Breadcrumb (hidden by default; toggle via CSS/JS if desired) -->
+  <nav id="breadcrumb" class="hidden">
+    <ul>
+      <li data-step="welcome">Welcome</li>
+      <li data-step="category">Category</li>
+      <li data-step="traits">Traits</li>
+      <li data-step="results">Results</li>
+      <li data-step="reflection">Reflection</li>
+      <li data-step="plan">Plan</li>
+      <li data-step="navi">NAVI</li>
+    </ul>
+  </nav>
 
-    <section class="card hero">
-      <h1>Discover your purpose</h1>
-      <p class="sub">Answer a quick set of trait prompts. Get aligned roles and a clear next step.</p>
-      <div style="margin:.75rem 0 1rem;">
-        <button id="startBtn" class="btn primary">Start with NOVA →</button>
+  <!-- WELCOME -->
+  <section id="screen-welcome" class="screen active">
+    <section id="welcome" class="wrap">
+      <h1>Welcome to NOVA</h1>
+      <p class="tag">Discover your purpose → turn it into a path.</p>
+      <div class="stat">
+        <strong>89%</strong> of people don’t know or operate in their purpose.
+        <span>We’re changing that—step by step.</span>
       </div>
-
-      <div class="grid">
-        <div class="box">
-          <strong>What you’ll get</strong>
-          <ul>
-            <li>Your top traits (5+)</li>
-            <li>Aligned roles &amp; training paths</li>
-            <li>Snapshot you can save</li>
-          </ul>
-        </div>
-        <div class="box">
-          <strong>How it works</strong>
-          <ul>
-            <li>Pick at least 5 traits</li>
-            <li>Reflect on your results</li>
-            <li>Choose a plan to go further</li>
-          </ul>
-        </div>
-        <div class="box">
-          <strong>Did you know?</strong>
-          <div class="stat">• 89% of people don’t know or operate in their purpose.</div>
-        </div>
+      <h2>How this works</h2>
+      <ol class="flow">
+        <li><strong>Select Your Category</strong> — pick the domain that fits your background or interest.</li>
+        <li><strong>Select Your Traits</strong> — choose from Nova’s trait grid tailored to your category.</li>
+        <li><strong>See Results</strong> — get your Nova snapshot and role alignments.</li>
+        <li><strong>Reflect</strong> — mark where you’re starting (Now / Pivoting / Returning / Launching).</li>
+        <li><strong>Choose Your Plan</strong> — Book, Starter, Pro, or Mastery to move forward.</li>
+        <li><strong>Enter NAVI</strong> — tools, training, and next steps to execute.</li>
+      </ol>
+      <div class="cta">
+        <button id="startFlowBtn" class="btn-primary">Start — Choose My Category</button>
+        <p class="note">Already started? <a id="resumeLink" href="#">Resume where I left off</a></p>
       </div>
-
-      <div class="footer">Flow: Welcome → Traits → Results → Reflection → Offers → Payments.</div>
     </section>
-  </div>
+  </section>
 
-<script>
-function novaHardReset(){
-  const KEYS = ['novaSelectedTraits','novaSelections','novaSnapshot','novaScore','novaLastStep','novaResultBlob','novaReflection'];
-  KEYS.forEach(k=>localStorage.removeItem(k));
-  sessionStorage.removeItem('traitsResetThisVisit');
-}
-document.getElementById('startBtn').addEventListener('click', () => {
-  novaHardReset();
-  window.location.href = 'traits.html';
-});
-</script>
-</body></html>
+  <!-- CATEGORY -->
+  <section id="screen-category" class="screen">
+    <div class="wrap">
+      <h2>Select Your Category</h2>
+      <p class="sub">Pick the domain that best fits your background or interest.</p>
+      <div id="categoryGrid" class="grid"></div>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="welcome">Back</button>
+        <button class="btn-primary" id="toTraits" disabled>Continue to Traits</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAITS -->
+  <section id="screen-traits" class="screen">
+    <div class="wrap">
+      <h2>Select Your Traits</h2>
+      <p class="sub">Choose up to 10 traits that sound most like you.</p>
+      <div id="traitGrid" class="grid grid-traits"></div>
+      <div class="trait-legend">
+        <span class="pill">Selected</span> selections left: <strong id="selectionsLeft">10</strong>
+        <button id="clearSelections" class="btn-link">Clear selections</button>
+      </div>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="category">Back</button>
+        <button class="btn-primary" id="seeResults" disabled>See My Results</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="screen-results" class="screen">
+    <div class="wrap">
+      <h2>Your NOVA Snapshot</h2>
+      <div id="resultsSummary" class="card"></div>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="traits">Back</button>
+        <button class="btn-primary" id="toReflection">Save & Continue</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section id="screen-reflection" class="screen">
+    <div class="wrap">
+      <h2>Where are you starting?</h2>
+      <div id="reflectionOptions" class="grid grid-reflection"></div>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="results">Back</button>
+        <button class="btn-primary" id="toPlan" disabled>Save & Continue</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN OFFERS -->
+  <section id="screen-plan" class="screen">
+    <div class="wrap">
+      <h2>Choose Your Path</h2>
+      <div class="plans">
+        <!-- Book -->
+        <article class="plan">
+          <h3>Purpose Book</h3>
+          <p>How to Know Your Purpose — a practical guide to start strong.</p>
+          <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
+        </article>
+        <!-- Starter (needs Product ID) -->
+        <article class="plan">
+          <h3>Starter</h3>
+          <p>NOVA results PDF, basic resume builder, standard matches.</p>
+          <button class="btn-disabled" title="Add Payhip product ID in app.js → PAYHIP_IDS.STARTER">Buy (configure ID)</button>
+        </article>
+        <!-- Pro (needs Product ID) -->
+        <article class="plan">
+          <h3>Pro</h3>
+          <p>Everything in Starter + resume rewrite AI, unlimited cover letters, company reports.</p>
+          <button class="btn-disabled" title="Add Payhip product ID in app.js → PAYHIP_IDS.PRO">Buy (configure ID)</button>
+        </article>
+        <!-- Mastery / Pro Suite -->
+        <article class="plan">
+          <h3>Mastery (NAVI Pro Suite)</h3>
+          <p>Everything in Pro + 1:1 coaching, roadmap, extended library, masterclass invites.</p>
+          <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a>
+        </article>
+      </div>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="reflection">Back</button>
+        <button class="btn-primary" id="toNavi">Enter NAVI</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVI ENTRY -->
+  <section id="screen-navi" class="screen">
+    <div class="wrap">
+      <h2>Welcome to NAVI</h2>
+      <p class="sub">Your action center: tools, training, and next steps based on your plan.</p>
+      <ul class="navi-list">
+        <li><strong>Starter:</strong> Resume Builder, basic job suggestions.</li>
+        <li><strong>Pro:</strong> Resume rewrite AI, unlimited cover letters, company intelligence reports.</li>
+        <li><strong>Mastery:</strong> Everything in Pro + 1:1 coaching, roadmap PDF, extended library.</li>
+      </ul>
+      <div class="cta-row">
+        <button class="btn-secondary" data-nav="plan">Back to Plans</button>
+        <a class="btn-primary" href="#" id="dashboardLink">Go to My Dashboard</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
