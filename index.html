@@ -12,6 +12,7 @@
     <div class="brand">NOVA + NAVI</div>
     <nav>
       <a href="#welcome" class="nav">Welcome</a>
+      <a href="#categories" class="nav">Categories</a>
       <a href="#traits" class="nav">Traits</a>
       <a href="#results" class="nav">Results</a>
       <a href="#reflection" class="nav">Reflection</a>
@@ -21,42 +22,65 @@
   </header>
 
   <main id="view-root">
+    <!-- Welcome -->
     <section id="welcome" class="view active">
       <div class="panel">
         <h1>Welcome to NOVA</h1>
-        <p class="lead">I’ll help you clarify your purpose, spotlight your strengths, and choose the best next step.</p>
+        <p class="lead">You were created with intention. We built Nova so you don’t have to guess your purpose — you can discover it, step by step.</p>
+        <div class="stat-callout">
+          <strong>89%</strong> of people don’t know or don’t operate in their purpose. That changes today.
+        </div>
         <ul class="bullets">
-          <li>Discover key traits and strengths</li>
-          <li>Reflect on where you are right now</li>
-          <li>Choose your next step with Navi</li>
+          <li>Discover your core traits and strengths</li>
+          <li>See roles that align with how you’re wired</li>
+          <li>Choose your next step with Navi (Starter, Pro, or Mastery)</li>
         </ul>
-        <button class="primary" data-goto="#traits">Start Discovery</button>
+        <button class="primary" data-goto="#categories">Begin</button>
       </div>
     </section>
 
+    <!-- Categories -->
+    <section id="categories" class="view">
+      <div class="panel">
+        <h2>Pick a starting category</h2>
+        <p class="sub">We’ll load traits tailored to that lane. You can explore others later.</p>
+        <div id="category-grid" class="grid"></div>
+        <div class="actions">
+          <button class="primary" id="to-traits" data-goto="#traits" disabled>Load Traits</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Traits -->
     <section id="traits" class="view">
       <div class="panel">
         <h2>Select the traits that feel most like you</h2>
+        <p class="sub">Choose at least <strong id="min-count">8</strong> traits to continue.</p>
         <div id="traits-grid" class="grid"></div>
         <div class="actions">
-          <button id="clear-traits" class="ghost">Clear Selections</button>
+          <button id="clear-traits" class="ghost">Clear</button>
           <button class="primary" data-goto="#results" id="see-results" disabled>See My Results</button>
         </div>
       </div>
     </section>
 
+    <!-- Results -->
     <section id="results" class="view">
       <div class="panel">
         <h2>Your Snapshot</h2>
         <p class="sub">Top traits you selected:</p>
         <div id="results-list" class="tag-row"></div>
+        <h3 style="margin-top:16px">Suggested Roles</h3>
+        <p class="sub">Based on your trait combo, here are some starting directions:</p>
+        <ul id="role-suggestions" class="roles"></ul>
         <div class="actions">
-          <button class="ghost" data-goto="#traits">Back to Traits</button>
+          <button class="ghost" data-goto="#traits">Back</button>
           <button class="primary" data-goto="#reflection">Continue</button>
         </div>
       </div>
     </section>
 
+    <!-- Reflection -->
     <section id="reflection" class="view">
       <div class="panel">
         <h2>Where are you right now?</h2>
@@ -68,10 +92,11 @@
       </div>
     </section>
 
+    <!-- Choose Path -->
     <section id="path" class="view">
       <div class="panel">
         <h2>Choose Your Path</h2>
-        <p class="sub">Based on your snapshot and reflection, pick the guidance that fits best.</p>
+        <p class="sub">Pick the guidance that fits where you are and where you’re going.</p>
         <div class="cards small" id="path-suggestions"></div>
         <div class="actions">
           <button class="ghost" data-goto="#reflection">Back</button>
@@ -80,6 +105,7 @@
       </div>
     </section>
 
+    <!-- Plans -->
     <section id="plans" class="view">
       <div class="panel">
         <h2>Navi Plans</h2>

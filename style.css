@@ -7,14 +7,15 @@ main{max-width:980px;margin:0 auto;padding:20px}
 .panel{background:#12224a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
 h1,h2{margin:0 0 12px}
 .lead{opacity:.92}
+.stat-callout{margin:12px 0;padding:12px;border-radius:10px;background:rgba(0,194,255,.1);border:1px solid rgba(127,228,255,.35)}
 .bullets{margin:12px 0 20px}
 .bullets li{margin:6px 0}
 .view{display:none}
 .view.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:14px 0 12px}
-.trait{padding:10px 12px;border:1px solid rgba(255,255,255,.15);border-radius:10px;cursor:pointer;user-select:none;text-align:center;transition:.15s}
-.trait:hover{transform:translateY(-1px)}
-.trait.selected{outline:2px solid #7fe4ff;background:rgba(127,228,255,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:14px 0 12px}
+.category,.trait{padding:12px;border:1px solid rgba(255,255,255,.15);border-radius:10px;cursor:pointer;user-select:none;text-align:center;transition:.15s;background:#0e1e44}
+.category:hover,.trait:hover{transform:translateY(-1px)}
+.category.selected,.trait.selected{outline:2px solid #7fe4ff;background:rgba(127,228,255,.08)}
 .actions{display:flex;gap:12px;justify-content:flex-end;margin-top:16px}
 button{border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
 button.primary{background:#00c2ff;color:#001325;font-weight:700}
@@ -23,12 +24,13 @@ button.secondary{background:#1a2a5a;color:#e8f2ff}
 button:disabled{opacity:.5;cursor:not-allowed}
 .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .tag{padding:6px 10px;background:#0a1a44;border:1px solid rgba(255,255,255,.12);border-radius:999px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
 .card{padding:14px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#0e1e44;cursor:pointer;transition:.15s}
 .card:hover{transform:translateY(-2px)}
 .card.selected{outline:2px solid #7fe4ff;background:rgba(127,228,255,.08)}
 .cards.small .card{min-height:120px}
 .sub{opacity:.8}
+.roles{margin:8px 0 0 18px}
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0}
 .plan-card{padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#0e1e44}
 .plan-card.featured{outline:2px solid #ffd46b;background:rgba(255,212,107,.06)}

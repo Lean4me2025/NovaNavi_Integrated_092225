@@ -1,0 +1,74 @@
+{
+  "Business & Sales": [
+    "Leadership",
+    "Strategic",
+    "Persuasive",
+    "Results\u2011Driven",
+    "Organized",
+    "Client\u2011Focused",
+    "Planner",
+    "Communication",
+    "Teamwork",
+    "Process\u2011Focused"
+  ],
+  "Technology & Engineering": [
+    "Analytical",
+    "Problem\u2011Solver",
+    "Technical Aptitude",
+    "Logical",
+    "Data\u2011Savvy",
+    "Systems Thinker",
+    "Detail\u2011Oriented",
+    "Research\u2011Driven",
+    "Numerate",
+    "Innovative"
+  ],
+  "Service & Healthcare": [
+    "Empathetic",
+    "Calm Under Pressure",
+    "Patient",
+    "Observant",
+    "Listener",
+    "Resourceful",
+    "Ethical",
+    "Collaborative",
+    "Service\u2011Oriented",
+    "Organizer"
+  ],
+  "Creative & Media": [
+    "Creative",
+    "Design\u2011Minded",
+    "Storyteller",
+    "Communication",
+    "Curious",
+    "Visionary",
+    "Adaptable",
+    "Initiative",
+    "Innovative",
+    "Learner"
+  ],
+  "Skilled Trades": [
+    "Hands\u2011On",
+    "Disciplined",
+    "Methodical",
+    "Quality\u2011Focused",
+    "Problem\u2011Solver",
+    "Planner",
+    "Adaptable",
+    "Resilient",
+    "Observant",
+    "Process\u2011Focused"
+  ],
+  "Education & Social Services": [
+    "Teacher\u2011Hearted",
+    "Mentor\u2011Minded",
+    "Empathetic",
+    "Collaborative",
+    "Organized",
+    "Communication",
+    "Listener",
+    "Planner",
+    "Patient",
+    "Service\u2011Oriented"
+  ]
+}
