@@ -1,1 +1,123 @@
-<!DOCTYPE html><html><head><title>Nova + Navi</title></head><body><h1>Welcome to NOVA</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nova + Navi — Integrated Flow</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">NOVA + NAVI</div>
+    <nav>
+      <a href="#welcome" class="nav">Welcome</a>
+      <a href="#traits" class="nav">Traits</a>
+      <a href="#results" class="nav">Results</a>
+      <a href="#reflection" class="nav">Reflection</a>
+      <a href="#path" class="nav">Path</a>
+      <a href="#plans" class="nav">Plans</a>
+    </nav>
+  </header>
+
+  <main id="view-root">
+    <section id="welcome" class="view active">
+      <div class="panel">
+        <h1>Welcome to NOVA</h1>
+        <p class="lead">I’ll help you clarify your purpose, spotlight your strengths, and choose the best next step.</p>
+        <ul class="bullets">
+          <li>Discover key traits and strengths</li>
+          <li>Reflect on where you are right now</li>
+          <li>Choose your next step with Navi</li>
+        </ul>
+        <button class="primary" data-goto="#traits">Start Discovery</button>
+      </div>
+    </section>
+
+    <section id="traits" class="view">
+      <div class="panel">
+        <h2>Select the traits that feel most like you</h2>
+        <div id="traits-grid" class="grid"></div>
+        <div class="actions">
+          <button id="clear-traits" class="ghost">Clear Selections</button>
+          <button class="primary" data-goto="#results" id="see-results" disabled>See My Results</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="view">
+      <div class="panel">
+        <h2>Your Snapshot</h2>
+        <p class="sub">Top traits you selected:</p>
+        <div id="results-list" class="tag-row"></div>
+        <div class="actions">
+          <button class="ghost" data-goto="#traits">Back to Traits</button>
+          <button class="primary" data-goto="#reflection">Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reflection" class="view">
+      <div class="panel">
+        <h2>Where are you right now?</h2>
+        <div id="reflection-options" class="cards"></div>
+        <div class="actions">
+          <button class="ghost" data-goto="#results">Back</button>
+          <button id="save-reflection" class="primary" data-goto="#path" disabled>Save & Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="path" class="view">
+      <div class="panel">
+        <h2>Choose Your Path</h2>
+        <p class="sub">Based on your snapshot and reflection, pick the guidance that fits best.</p>
+        <div class="cards small" id="path-suggestions"></div>
+        <div class="actions">
+          <button class="ghost" data-goto="#reflection">Back</button>
+          <button class="primary" data-goto="#plans">See Plans</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="view">
+      <div class="panel">
+        <h2>Navi Plans</h2>
+        <p class="sub">Select the option that matches your needs and pace.</p>
+        <div class="plans">
+          <div class="plan-card">
+            <div class="plan-title">Purpose Book</div>
+            <p>Start simple with a guided book to spark clarity.</p>
+            <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
+          </div>
+          <div class="plan-card">
+            <div class="plan-title">Starter</div>
+            <p>Essential tools to begin your journey (in‑app guidance).</p>
+            <button class="secondary" onclick="alert('Starter checkout link pending — use Mastery or Book for now.');">Learn More</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-title">Pro</div>
+            <p>Advanced tools for momentum and applications.</p>
+            <button class="secondary" onclick="alert('Pro checkout link pending — use Mastery or Book for now.');">Learn More</button>
+          </div>
+          <div class="plan-card featured">
+            <div class="plan-title">Mastery</div>
+            <p>Everything in Pro plus 1:1 support and roadmap.</p>
+            <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="ghost" data-goto="#path">Back</button>
+          <button class="primary" onclick="window.scrollTo({top:0,behavior:'smooth'});">Finish</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>© Nova + Navi</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

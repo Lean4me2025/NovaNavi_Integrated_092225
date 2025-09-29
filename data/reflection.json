@@ -1,0 +1,22 @@
+[
+  {
+    "id": "starting",
+    "title": "I\u2019m just starting",
+    "desc": "I\u2019m clarifying purpose and exploring options."
+  },
+  {
+    "id": "pivoting",
+    "title": "I\u2019m pivoting",
+    "desc": "I have experience but I\u2019m shifting direction."
+  },
+  {
+    "id": "advancing",
+    "title": "I\u2019m advancing",
+    "desc": "I\u2019m in my lane and ready to level up."
+  },
+  {
+    "id": "restarting",
+    "title": "I\u2019m restarting",
+    "desc": "I\u2019m coming back after a pause and need structure."
+  }
+]
