@@ -5,7 +5,7 @@ let SELECTED = new Set();
 function $(id){ return document.getElementById(id); }
 
 async function loadBrain(){
-  const res = await fetch('public/data/nova_brain.json');
+  const res = await fetch('/data/nova_brain.json'); // corrected path
   BRAIN = await res.json();
   const wrap = $('traits');
   wrap.innerHTML = '';
